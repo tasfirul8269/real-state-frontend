@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom"; // Added useLocation
 import "animate.css";
 import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
@@ -10,6 +10,10 @@ const Navbar = () => {
   
   // State for scroll detection
   const [scrolled, setScrolled] = useState(false);
+
+  // Get current route location
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   // Effect to handle scroll behavior
   useEffect(() => {
@@ -30,22 +34,26 @@ const Navbar = () => {
 
   // Data for Off Plan dropdown menu items
   const offPlanMenuList = [
-    { id: 1, name: "About", link: "/about" },
-    { id: 2, name: "Off Plan Properties", link: "/off-plan-properties" },
-    { id: 3, name: "Developers", link: "/developers" },
+    { id: 1, name: "About", link: "about" },
+    { id: 2, name: "Off Plan Properties", link: "off-plan-properties" },
+    { id: 3, name: "Developers", link: "developers" },
   ];
 
   // Data for Commercial dropdown menu items
   const commercialMenuList = [
-    { id: 1, name: "Commercial Properties For Sell", link: "/for-sell" },
-    { id: 1, name: "Commercial Properties For Rent", link: "/for-rent" },
+    { id: 1, name: "Commercial Properties For Sell", link: "for-sell" },
+    { id: 2, name: "Commercial Properties For Rent", link: "for-rent" },
   ];
 
   return (
-    // Main navigation container with dynamic classes based on scroll state
+    // Main navigation container with dynamic classes based on scroll state and route
     <nav
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#083819] shadow-md py-2" : "bg-[#083819] py-4"
+        isHomePage 
+          ? scrolled 
+            ? "bg-[#083819] shadow-md py-2" 
+            : "bg-transparent py-4"
+          : "bg-[#083819] shadow-md py-2"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -53,7 +61,11 @@ const Navbar = () => {
         <div className="hidden md:flex items-center justify-between">
           {/* Logo section */}
           <Link to="/" className="animate__animated animate__fadeIn">
-            <h3 className="text-4xl font-semibold text-white">Real <span className="font-extralight">State</span></h3>
+            <h3 className={`text-4xl font-semibold ${
+              isHomePage && !scrolled ? "text-white" : "text-white"
+            }`}>
+              Real <span className="font-extralight">State</span>
+            </h3>
           </Link>
           
           {/* Navigation links section */}
@@ -62,7 +74,9 @@ const Navbar = () => {
               {/* Buy link */}
               <Link
                 to="/buy"
-                className="text-gray-200 hover:underline  text-sm uppercase animate__animated animate__fadeIn animate__delay-1s"
+                className={`${
+                  isHomePage && !scrolled ? "text-white" : "text-gray-200"
+                } hover:underline text-sm uppercase animate__animated animate__fadeIn animate__delay-1s`}
               >
                 Buy
               </Link>
@@ -70,7 +84,9 @@ const Navbar = () => {
               {/* Rent link */}
               <Link
                 to="/rent"
-                className="text-gray-200 hover:underline  text-sm uppercase animate__animated animate__fadeIn animate__delay-1s"
+                className={`${
+                  isHomePage && !scrolled ? "text-white" : "text-gray-200"
+                } hover:underline text-sm uppercase animate__animated animate__fadeIn animate__delay-1s`}
               >
                 Rent
               </Link>
@@ -78,7 +94,9 @@ const Navbar = () => {
               {/* Off Plan dropdown section */}
               <div className="relative group uppercase">
                 <details className="cursor-pointer">
-                  <summary className="flex items-center  text-gray-200 hover:underline">
+                  <summary className={`flex items-center ${
+                    isHomePage && !scrolled ? "text-white" : "text-gray-200"
+                  } hover:underline`}>
                     Off Plan{" "}
                     <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
                   </summary>
@@ -93,7 +111,7 @@ const Navbar = () => {
                       >
                         <Link
                           to={`/${item.link}`}
-                          className="block text-[#083819] hover:text-[#083819]  text-sm uppercase py-3 border-b border-gray-100"
+                          className="block text-[#083819] hover:text-[#083819] text-sm uppercase py-3 border-b border-gray-100"
                         >
                           {item.name}
                         </Link>
@@ -106,7 +124,9 @@ const Navbar = () => {
               {/* Commercial dropdown section */}
               <div className="relative group uppercase">
                 <details className="cursor-pointer">
-                  <summary className="flex items-center  text-gray-200 hover:underline">
+                  <summary className={`flex items-center ${
+                    isHomePage && !scrolled ? "text-white" : "text-gray-200"
+                  } hover:underline`}>
                     Commercial{" "}
                     <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
                   </summary>
@@ -121,7 +141,7 @@ const Navbar = () => {
                       >
                         <Link
                           to={`/${item.link}`}
-                          className="block text-[#083819] hover:text-[#083819]  text-sm uppercase py-3 border-b border-gray-100"
+                          className="block text-[#083819] hover:text-[#083819] text-sm uppercase py-3 border-b border-gray-100"
                         >
                           {item.name}
                         </Link>
@@ -134,7 +154,9 @@ const Navbar = () => {
               {/* Contact link */}
               <Link
                 to="/contact"
-                className="text-gray-200 hover:underline  text-sm uppercase animate__animated animate__fadeIn animate__delay-1s"
+                className={`${
+                  isHomePage && !scrolled ? "text-white" : "text-gray-200"
+                } hover:underline text-sm uppercase animate__animated animate__fadeIn animate__delay-1s`}
               >
                 Contact
               </Link>
@@ -142,12 +164,16 @@ const Navbar = () => {
           </div>
 
           {/* WhatsApp contact section */}
-          <div className="flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-2s rounded-full border border-green-300 hover:bg-white">
+          <div className={`flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-2s rounded-full border ${
+            isHomePage && !scrolled ? "border-white" : "border-green-300"
+          } hover:bg-white`}>
             <a
               href="https://wa.me/+8801640301028"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex justify-center items-center gap-1.5 text-white hover:text-black px-5 py-3"
+              className={`flex justify-center items-center gap-1.5 ${
+                isHomePage && !scrolled ? "text-white hover:text-[#083819]" : "text-white hover:text-black"
+              } px-5 py-3`}
             >
               <FaWhatsapp className="text-xl text-green-500" /> <span className="">Whatsapp</span>
             </a>
@@ -176,7 +202,9 @@ const Navbar = () => {
             {/* Mobile menu toggle button */}
             <button
               onClick={toggleMenu}
-              className="text-gray-200 focus:outline-none animate__animated animate__fadeIn animate__delay-1s"
+              className={`${
+                isHomePage && !scrolled ? "text-white" : "text-gray-200"
+              } focus:outline-none animate__animated animate__fadeIn animate__delay-1s`}
             >
               {isMenuOpen ? (
                 <FaTimes className="w-6 h-6" />
@@ -189,7 +217,7 @@ const Navbar = () => {
 
         {/* Mobile menu content - shown when menu is open */}
         {isMenuOpen && (
-          <div className="md:hidden bg-white shadow-lg rounded-lg mt-2  animate__animated animate__fadeInRight animate__faster">
+          <div className="md:hidden bg-white shadow-lg rounded-lg mt-2 animate__animated animate__fadeInRight animate__faster">
             <div className="flex flex-col px-4">
               {/* Buy link */}
               <Link
@@ -202,13 +230,13 @@ const Navbar = () => {
               {/* Rent link */}
               <Link
                 to="/rent"
-                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase  border-x-0 border-y border-gray-100 py-5"
+                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
               >
                 Rent
               </Link>
               
               {/* Off Plan dropdown for mobile */}
-              <details className="cursor-pointer  border-x-0 border-y border-gray-100 py-5">
+              <details className="cursor-pointer border-x-0 border-y border-gray-100 py-5">
                 <summary className="flex items-center justify-between font-extralight text-[#083819] uppercase">
                   Off Plan <IoIosArrowDown />
                 </summary>
@@ -220,7 +248,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={`/${item.link}`}
-                      className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase  border-x-0 border-y border-gray-100 py-5"
+                      className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
                     >
                       {item.name}
                     </Link>
@@ -229,7 +257,7 @@ const Navbar = () => {
               </details>
               
               {/* Commercial dropdown for mobile */}
-              <details className="cursor-pointer  border-x-0 border-y border-gray-100 py-5">
+              <details className="cursor-pointer border-x-0 border-y border-gray-100 py-5">
                 <summary className="flex items-center justify-between font-extralight text-[#083819] uppercase">
                   Commercial <IoIosArrowDown />
                 </summary>
@@ -241,7 +269,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={`/${item.link}`}
-                      className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase  border-x-0 border-y border-gray-100 py-5"
+                      className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
                     >
                       {item.name}
                     </Link>
@@ -252,7 +280,7 @@ const Navbar = () => {
               {/* Blog link */}
               <Link
                 to="/blog"
-                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase  border-x-0 border-y border-gray-100 py-5"
+                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
               >
                 Blog
               </Link>
@@ -260,7 +288,7 @@ const Navbar = () => {
               {/* Contact link */}
               <Link
                 to="/contact"
-                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase  border-x-0 border-y border-gray-100 py-5"
+                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
               >
                 Contact
               </Link>
