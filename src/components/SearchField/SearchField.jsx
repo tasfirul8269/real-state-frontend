@@ -2,10 +2,10 @@ import React from 'react';
 
 const SearchField = () => {
     return (
-        <form className='flex  gap-4 justify-center items-center mt-8'>
+        <form className='flex  gap-4 justify-center items-center'>
             <div>
-            <button className='cursor-pointer px-8 py-4 text-gray-400 bg-gray-100 rounded-md hover:border border-black'>Buy</button>
-            <button className='cursor-pointer px-8 py-4 text-gray-400 bg-gray-100 rounded-md hover:border border-black'>Rent</button>
+            <button className='cursor-pointer px-8 py-4 text-gray-400 hover:bg-[#f6f6f1] bg-gray-100 rounded-md hover:border border-black'>Buy</button>
+            <button className='cursor-pointer px-8 py-4 text-gray-400 hover:bg-[#f6f6f1] bg-gray-100 rounded-md hover:border border-black'>Rent</button>
             </div>
             <div className='flex justify-center items-center gap-4 text-gray-400 bg-gray-100 border border-gray-300  px-6 rounded-md'>
                 <select className=' px-8 py-4 text-gray-400 bg-gray-100 cursor-pointer'>
