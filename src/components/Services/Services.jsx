@@ -3,14 +3,14 @@ import {  FaArrowRight } from "react-icons/fa";
 
 const Services = () => {
   return (
-    <div className="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 text-center p-10 my-10">
+    <div className=" mx-auto px-4 py-12 grid md:grid-cols-2 gap-8 text-center p-10 my-10">
       {/* Dubai Communities Section */}
       <div
         style={{
             backgroundImage:
               "url(https://www.hausandhaus.com/static/Fill-2-c0f8fd2ae90e2cc1a3f4062fb27fc31d.svg)",
           }}
-      className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow p-10">
+      className="card bg-[#f6f6f1] shadow-xl hover:shadow-2xl transition-shadow p-10 ">
         <div className="card-body">
           <h2 className="card-title text-3xl font-semibold text-[#083819]">Dubai Communities</h2>
           <p className="text-[#565e59] mt-2">
@@ -30,7 +30,7 @@ const Services = () => {
         backgroundImage:
           "url(https://www.hausandhaus.com/static/Stroke-cta-f3337b7d8524ab0ffb21e898da1efb9e.svg)",
       }}
-      className="card bg-base-100 shadow-xl hover:shadow-2xl transition-shadow p-10">
+      className="card bg-[#f6f6f1] shadow-xl hover:shadow-2xl transition-shadow p-10">
         <div className="card-body">
           <h2 className="card-title text-3xl font-semibold text-[#083819]">Find your consultant</h2>
           <p className="text-[#565e59] mt-2">
