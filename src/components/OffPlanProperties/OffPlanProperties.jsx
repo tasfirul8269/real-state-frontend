@@ -45,7 +45,7 @@ const OffPlanProperties = () => {
         {properties.map((property, index) => (
           <div 
             key={index}
-            className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp animate__delay-${index + 1}s`}
+            className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp `}
           >
             {/* Property Image */}
             <div className="h-48 overflow-hidden">
