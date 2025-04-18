@@ -96,67 +96,64 @@ const Navbar = () => {
 
               {/* Off Plan dropdown section */}
               <div className="relative group uppercase">
-                <details className="cursor-pointer">
-                  <summary
-                    className={`flex items-center ${
-                      isHomePage && !scrolled ? "text-white" : "text-gray-200"
-                    } hover:underline`}
-                  >
-                    Off Plan{" "}
-                    <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
-                  </summary>
+  <button
+    className={`flex items-center cursor-pointer ${
+      isHomePage && !scrolled ? "text-white" : "text-gray-200"
+    } hover:underline`}
+  >
+    Off Plan{" "}
+    <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
+  </button>
 
-                  {/* Off Plan dropdown content */}
-                  <div className="absolute left-0 top-full mt-2 w-56 bg-white shadow-lg rounded-md z-50 overflow-hidden">
-                    {offPlanMenuList.map((item) => (
-                      <div
-                        className="animate__animated animate__fadeInDown px-4 hover:bg-gray-50 transition-colors"
-                        key={item.id}
-                        style={{ animationDuration: "0.3s" }}
-                      >
-                        <Link
-                          to={`/${item.link}`}
-                          className="block text-[#083819] hover:text-[#083819] text-sm uppercase py-3 border-b border-gray-100"
-                        >
-                          {item.name}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </details>
-              </div>
+  {/* Off Plan dropdown content - shown on hover */}
+  <div className="absolute left-0 top-full mt-2 w-56 bg-white shadow-lg rounded-md z-50 overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 cursor-pointer">
+    {offPlanMenuList.map((item) => (
+      <div
+        className="animate__animated animate__fadeInDown px-4 hover:bg-gray-50 transition-colors"
+        key={item.id}
+        style={{ animationDuration: "0.3s" }}
+      >
+        <Link
+          to={`/${item.link}`}
+          className="block text-[#083819] hover:text-[#083819] text-sm uppercase py-3 border-b border-gray-100"
+        >
+          {item.name}
+        </Link>
+      </div>
+    ))}
+  </div>
+</div>
 
               {/* Commercial dropdown section */}
-              <div className="relative group uppercase">
-                <details className="cursor-pointer">
-                  <summary
-                    className={`flex items-center ${
-                      isHomePage && !scrolled ? "text-white" : "text-gray-200"
-                    } hover:underline`}
-                  >
-                    Commercial{" "}
-                    <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
-                  </summary>
+<div className="relative group uppercase cursor-pointer">
+  <button
+    className={`flex items-center cursor-pointer ${
+      isHomePage && !scrolled ? "text-white" : "text-gray-200"
+    } hover:underline`}
+  >
+    Commercial{" "}
+    <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180 " />
+  </button>
 
-                  {/* Commercial dropdown content */}
-                  <div className="absolute left-0 top-full mt-2 w-56 bg-white shadow-lg rounded-md z-50 overflow-hidden">
-                    {commercialMenuList.map((item) => (
-                      <div
-                        className="animate__animated animate__fadeInDown px-4 hover:bg-gray-50 transition-colors"
-                        key={item.id}
-                        style={{ animationDuration: "0.3s" }}
-                      >
-                        <Link
-                          to={`/${item.link}`}
-                          className="block text-[#083819] hover:text-[#083819] text-sm uppercase py-3 border-b border-gray-100 "
-                        >
-                          {item.name}
-                        </Link>
-                      </div>
-                    ))}
-                  </div>
-                </details>
-              </div>
+  {/* Commercial dropdown content - shown on hover */}
+  <div className="absolute left-0 top-full mt-2 w-56 bg-white shadow-lg rounded-md z-50 overflow-hidden opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 cursor-pointer">
+    {commercialMenuList.map((item) => (
+      <div
+        className="animate__animated animate__fadeInDown px-4 hover:bg-gray-50 transition-colors"
+        key={item.id}
+        style={{ animationDuration: "0.3s" }}
+      >
+        <Link
+          to={`/${item.link}`}
+          className="block text-[#083819] hover:text-[#083819] text-sm uppercase py-3 border-b border-gray-100"
+        >
+          {item.name}
+        </Link>
+      </div>
+    ))}
+  </div>
+</div>
+             
 
               {/* Contact link */}
               <Link
@@ -172,7 +169,7 @@ const Navbar = () => {
 
           {/* WhatsApp contact section */}
           <div
-            className={`flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-2s rounded-full border ${
+            className={`flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-0.8s rounded-full border ${
               isHomePage && !scrolled ? "border-white" : "border-green-300"
             } hover:bg-white`}
           >
