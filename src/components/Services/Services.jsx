@@ -42,7 +42,7 @@ const Services = () => {
                 type="text"
                 name="consultant-search"
                 placeholder="Name or department"
-                className="input input-bordered join-item w-full bg-white text-gray-700 px-5 py-6 focus:outline-none"
+                className="input input-bordered join-item w-full bg-white text-gray-700 px-5 py-7 border-none focus:outline-none"
               />
               {/* search button */}
               <div className="join-item rounded-full text-gray-600 bg-[#36dea4] hover:text-white hover:bg-[#083819] p-2 cursor-pointer">
