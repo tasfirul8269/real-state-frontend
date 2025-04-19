@@ -214,20 +214,20 @@ const Navbar = () => {
           {/* Mobile menu icons */}
           <div className="flex items-center space-x-4">
             {/* WhatsApp icon */}
-            <a
-              href="https://wa.me/+8801640301028"
+            <Link
+              to="https://wa.me/+8801640301028"
               target="_blank"
               rel="noopener noreferrer"
               className="text-green-500 hover:text-green-600"
             >
               <FaWhatsapp className="text-xl" />
-            </a>
+            </Link>
 
             {/* Mobile menu toggle button */}
             <button
               onClick={toggleMenu}
               className={`${
-                isHomePage && !scrolled ? "text-white" : "text-gray-200"
+                isHomePage && !scrolled ? "text-white cursor-pointer" : "text-gray-200 cursor-pointer"
               } focus:outline-none animate__animated animate__fadeIn animate__delay-1s`}
             >
               {isMenuOpen ? (
