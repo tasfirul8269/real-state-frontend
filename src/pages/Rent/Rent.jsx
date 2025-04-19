@@ -1,6 +1,6 @@
 import PropertySearchBar from "../../components/PropertySearchBar/PropertySearchBar";
 
-const Buy = () => {
+const Rent = () => {
 
   return (
    <div>
@@ -11,4 +11,4 @@ const Buy = () => {
   );
 };
 
-export default Buy;
+export default Rent;
