@@ -70,7 +70,7 @@ const PropertySearchByFeature = () => {
         <TabPanel>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:bg-green-300 border-none transition  flex justify-center items-center gap-3">
+              <div key={index} className="px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:bg-red-300 border-none transition  flex justify-center items-center gap-3">
                 <img 
                     src={feature.image} 
                     alt={feature.name} 
@@ -80,7 +80,7 @@ const PropertySearchByFeature = () => {
                     }}
                   />
                 <div className="p-4">
-                  <h3 className="font-medium text-gray-800">{feature.name}</h3>
+                  <h3 className="font-medium text-gray-800 hover:text-white">{feature.name}</h3>
                 </div>
               </div>
             ))}
@@ -91,7 +91,7 @@ const PropertySearchByFeature = () => {
         <TabPanel>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {features.map((feature, index) => (
-              <div key={index} className="px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:bg-green-300 border-none transition  flex justify-center items-center gap-3">
+              <div key={index} className="px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:bg-red-300 border-none transition  flex justify-center items-center gap-3">
                 <img 
                     src={feature.image} 
                     alt={feature.name} 
@@ -101,7 +101,7 @@ const PropertySearchByFeature = () => {
                     }}
                   />
                 <div className="p-4">
-                  <h3 className="font-medium text-gray-800">{feature.name}</h3>
+                  <h3 className="font-medium text-gray-800 hover:text-white">{feature.name}</h3>
                 </div>
               </div>
             ))}

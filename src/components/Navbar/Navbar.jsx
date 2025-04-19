@@ -3,6 +3,8 @@ import { Link, useLocation } from "react-router-dom"; // Added useLocation
 import "animate.css";
 import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
+import './colors.css'
+import logo from "../../assets/logo.png";
 
 const Navbar = () => {
   // State for mobile menu toggle
@@ -51,9 +53,9 @@ const Navbar = () => {
       className={`fixed w-full py-5 z-50 transition-all duration-300 ${
         isHomePage
           ? scrolled
-            ? "bg-[#083819] shadow-md py-2"
+            ? "bg-pink-red shadow-md py-2"
             : "bg-transparent py-4"
-          : "bg-[#083819] shadow-md py-2"
+          : "bg-pink-red shadow-md py-2"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -61,13 +63,16 @@ const Navbar = () => {
         <div className="hidden md:flex items-center justify-between">
           {/* Logo section */}
           <Link to="/" className="animate__animated animate__fadeIn">
-          <div class="flex flex-col">
-              <h3 class="text-4xl font-semibold font-bold tracking-tight text-white">
-                MATELUXY
-              </h3>
-              <p class="text-xl uppercase tracking-widest text-white">
-                REAL ESTATE
-              </p>
+          <div class="flex justify-center items-center">
+              <img className="w-24" src={logo} alt="LOGO" />
+              <div>
+                <h3 class="text-2xl font-bold tracking-tight text-white">
+                  MATELUXY
+                </h3>
+                <p class="text-lg uppercase tracking-widest text-white">
+                  REAL ESTATE
+                </p>
+              </div>
             </div>
           </Link>
 
@@ -79,7 +84,7 @@ const Navbar = () => {
                 to="/buy"
                 className={`${
                   isHomePage && !scrolled ? "text-white" : "text-gray-200"
-                } hover:underline text-sm uppercase`}
+                } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm `}
               >
                 Buy
               </Link>
@@ -89,7 +94,7 @@ const Navbar = () => {
                 to="/rent"
                 className={`${
                   isHomePage && !scrolled ? "text-white" : "text-gray-200"
-                } hover:underline text-sm uppercase`}
+                } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm `}
               >
                 Rent
               </Link>
@@ -99,7 +104,7 @@ const Navbar = () => {
   <button
     className={`flex items-center cursor-pointer ${
       isHomePage && !scrolled ? "text-white" : "text-gray-200"
-    } hover:underline`}
+    } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm`}   
   >
     Off Plan{" "}
     <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
@@ -129,7 +134,7 @@ const Navbar = () => {
   <button
     className={`flex items-center cursor-pointer ${
       isHomePage && !scrolled ? "text-white" : "text-gray-200"
-    } hover:underline`}
+    } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm`}
   >
     Commercial{" "}
     <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180 " />
@@ -160,7 +165,7 @@ const Navbar = () => {
                 to="/contact"
                 className={`${
                   isHomePage && !scrolled ? "text-white" : "text-gray-200"
-                } hover:underline text-sm uppercase`}
+                } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm`}
               >
                 Contact
               </Link>
@@ -169,12 +174,12 @@ const Navbar = () => {
 
           {/* WhatsApp contact section */}
           <div
-            className={`flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-0.8s rounded-full border ${
-              isHomePage && !scrolled ? "border-white" : "border-green-300"
+            className={`flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-0.8s rounded-full  border-2 ${
+              isHomePage && !scrolled ? "border-blue-400" : "border-white"
             } hover:bg-white`}
           >
-            <a
-              href="https://wa.me/+1234567890"
+            <Link
+              to="https://wa.me/+1234567890"
               target="_blank"
               rel="noopener noreferrer"
               className={`flex justify-center items-center gap-1.5 ${
@@ -183,9 +188,9 @@ const Navbar = () => {
                   : "text-white hover:text-black"
               } px-5 py-3`}
             >
-              <FaWhatsapp className="text-xl text-green-500" />{" "}
+              <FaWhatsapp className="text-xl text-green-400" />{" "}
               <span className="">Whatsapp</span>
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -193,13 +198,16 @@ const Navbar = () => {
         <div className="md:hidden flex items-center justify-between">
           {/* Mobile logo */}
           <Link to="/" className="animate__animated animate__fadeIn">
-          <div class="flex flex-col">
-              <h3 class="text-2xl font-semibold font-bold tracking-tight text-white">
-                MATELUXY
-              </h3>
-              <p class="text-lg uppercase tracking-widest text-white">
-                REAL ESTATE
-              </p>
+          <div class="flex justify-center items-center">
+              <img className="w-20" src={logo} alt="LOGO" />
+              <div>
+                <h3 class="text-xl font-bold tracking-tight text-white">
+                  MATELUXY
+                </h3>
+                <p class="text-sm uppercase tracking-widest text-white">
+                  REAL ESTATE
+                </p>
+              </div>
             </div>
           </Link>
 
@@ -238,7 +246,7 @@ const Navbar = () => {
               {/* Buy link */}
               <Link
                 to="/buy"
-                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
+                className="text-[#083819] hover:text-[#083819] font-light text-sm uppercase border-x-0 border-y border-gray-100 py-5"
               >
                 Buy
               </Link>
@@ -246,14 +254,14 @@ const Navbar = () => {
               {/* Rent link */}
               <Link
                 to="/rent"
-                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
+                className="text-[#083819] hover:text-[#083819] font-light text-sm uppercase border-x-0 border-y border-gray-100 py-5"
               >
                 Rent
               </Link>
 
               {/* Off Plan dropdown for mobile */}
               <details className="cursor-pointer border-x-0 border-y border-gray-100 py-5">
-                <summary className="flex items-center justify-between font-extralight text-[#083819] uppercase">
+                <summary className="flex items-center justify-between font-light text-[#083819] uppercase">
                   Off Plan <IoIosArrowDown />
                 </summary>
                 {offPlanMenuList.map((item) => (
@@ -264,7 +272,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={`/${item.link}`}
-                      className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
+                      className="text-[#083819] hover:text-[#083819] font-light text-sm uppercase border-x-0 border-y border-gray-100 py-5"
                     >
                       {item.name}
                     </Link>
@@ -274,7 +282,7 @@ const Navbar = () => {
 
               {/* Commercial dropdown for mobile */}
               <details className="cursor-pointer border-x-0 border-y border-gray-100 py-5">
-                <summary className="flex items-center justify-between font-extralight text-[#083819] uppercase">
+                <summary className="flex items-center justify-between font-light text-[#083819] uppercase">
                   Commercial <IoIosArrowDown />
                 </summary>
                 {commercialMenuList.map((item) => (
@@ -285,7 +293,7 @@ const Navbar = () => {
                   >
                     <Link
                       to={`/${item.link}`}
-                      className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
+                      className="text-[#083819] hover:text-[#083819] font-light text-sm uppercase border-x-0 border-y border-gray-100 py-5"
                     >
                       {item.name}
                     </Link>
@@ -296,7 +304,7 @@ const Navbar = () => {
               {/* Blog link */}
               <Link
                 to="/blog"
-                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
+                className="text-[#083819] hover:text-[#083819] font-light text-sm uppercase border-x-0 border-y border-gray-100 py-5"
               >
                 Blog
               </Link>
@@ -304,7 +312,7 @@ const Navbar = () => {
               {/* Contact link */}
               <Link
                 to="/contact"
-                className="text-[#083819] hover:text-[#083819] font-extralight text-sm uppercase border-x-0 border-y border-gray-100 py-5"
+                className="text-[#083819] hover:text-[#083819] font-light text-sm uppercase border-x-0 border-y border-gray-100 py-5"
               >
                 Contact
               </Link>

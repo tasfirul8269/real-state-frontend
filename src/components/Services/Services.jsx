@@ -17,7 +17,7 @@ const Services = () => {
             Covering 100+ communities, we can help you find one that ticks your boxes.
           </p>
           <div className="mt-4">
-            <button className="flex justify-center items-center gap-1 px-7 py-5 rounded-full  text-gray-600 bg-[#36dea4] hover:text-white hover:bg-[#083819] p-2 cursor-pointer text-lg font-semibold">
+            <button className="flex justify-center items-center gap-1 px-7 py-5 rounded-full  text-white hover:text-white  bg-red-400 hover:bg-red-700 p-2 cursor-pointer text-lg font-semibold">
               Explore Dubai <FaArrowRight className="ml-2" />
             </button>
           </div>
@@ -42,10 +42,10 @@ const Services = () => {
                 type="text"
                 name="consultant-search"
                 placeholder="Name or department"
-                className="input input-bordered join-item w-full bg-white text-gray-700 px-5 py-7 border-none focus:outline-none"
+                className="input input-bordered join-item w-full bg-white  text-gray-700 px-5 py-7 border-none focus:outline-none"
               />
               {/* search button */}
-              <div className="join-item rounded-full text-gray-600 bg-[#36dea4] hover:text-white hover:bg-[#083819] p-2 cursor-pointer">
+              <div className="join-item rounded-full text-white    bg-red-400 hover:bg-red-700 hover:text-white p-2 cursor-pointer">
                 <CiSearch className="text-4xl" />
               </div>
             </div>

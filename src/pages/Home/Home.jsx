@@ -5,6 +5,7 @@ import TestimonialCard from "../../components/TestimonialCard/TestimonialCard";
 import Services from "../../components/Services/Services";
 import OffPlanProperties from "../../components/OffPlanProperties/OffPlanProperties";
 import PropertySearchTabs from "../../components/PropertySearchByFeature/PropertySearchByFeature";
+import ServiceCard from "../../components/ServiceCard/ServiceCard";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         <SearchField></SearchField>
         </div>
       </div>
+      <ServiceCard></ServiceCard>
       <TestimonialCard></TestimonialCard>
       <Services></Services>
       <OffPlanProperties></OffPlanProperties>

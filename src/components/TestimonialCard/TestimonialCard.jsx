@@ -19,7 +19,7 @@ const TestimonialCard = () => {
           <span className="text-gray-600 text-2xl">Google Reviews</span>
           <div className="flex space-x-1">
             {[...Array(5)].map((_, i) => (
-              <span key={i} className="text-green-400 text-2xl">★</span>
+              <span key={i} className="text-red-400 text-2xl">★</span>
             ))}
           </div>
         </div>
@@ -28,9 +28,9 @@ const TestimonialCard = () => {
 
         {/* Feel❤ rating */}
         <div className="flex items-center space-x-1">
-          <span className="text-gray-600 text-2xl">feelo</span>
           <FaHeart className="text-red-500" />
-          <span className="text-green-400 text-2xl">★★★★★</span>
+          <span className="text-gray-600 text-2xl">feelo</span>
+          <span className="text-red-400 text-2xl">★★★★★</span>
         </div>
       </div>
     </div>

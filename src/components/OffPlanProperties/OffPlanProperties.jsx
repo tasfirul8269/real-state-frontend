@@ -57,7 +57,7 @@ const OffPlanProperties = () => {
             </div>
             
             {/* Property Details */}
-            <div className="">
+            <div className=" pl-5">
               <h2 className="text-xl font-semibold text-gray-800 mb-2">{property.name}</h2>
               <p className="text-gray-600 mb-4 flex items-center">
                 <FaMapMarkerAlt className="mr-2" /> {property.location}
@@ -81,11 +81,11 @@ const OffPlanProperties = () => {
               <div className='border font-extralight border-gray-200'></div>
               
               {/* Action Buttons */}
-              <div className="flex space-x-4 mt-6 pb-5 px-5">
-                <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:bg-green-300 border-none transition flex-1">
+              <div className="flex space-x-4 justify-between mt-6 pb-5">
+                <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:text-white hover:bg-red-300 border-none transition flex-1">
                   <FaPhone className="mr-2" /> Call
                 </button>
-                <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:bg-green-300 border-none transition flex-1">
+                <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:text-white hover:bg-red-300 border-none transition flex-1">
                   <FaWhatsapp className="text-2xl" /> Whatsapp
                 </button>
               </div>
