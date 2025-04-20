@@ -261,7 +261,7 @@ const PropertySearchBar = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-white rounded-lg shadow-lg animate__animated animate__fadeIn">
+    <div className="w-full mx-auto p-6 bg-amber-50 rounded-lg shadow-lg animate__animated animate__fadeIn">
       <Tabs 
         selectedIndex={activeTab} 
         onSelect={(index) => {
@@ -281,9 +281,9 @@ const PropertySearchBar = () => {
           {/* Tabs */}
           <TabList className="flex flex-row space-x-2 bg-gray-100 p-2 rounded-lg h-[50px]">
             <Tab
-              className={`px-4 py-2 text-sm font-medium rounded-md cursor-pointer transition-all duration-300 flex items-center h-full ${
+              className={`px-4 py-2 text-sm font-medium rounded-md cursor-pointer transition-all duration-300 flex items-center  ${
                 activeTab === 0
-                  ? "bg-blue-600 text-white shadow-md"
+                  ? "bg-red-600 text-white shadow-md"
                   : "text-gray-700 hover:bg-gray-200"
               }`}
             >
@@ -378,8 +378,8 @@ const PropertySearchBar = () => {
             </TabPanel>
 
             <TabPanel>
-            <div className="animate__animated animate__fadeIn">
-                <div className="flex items-center gap-4 w-full" >
+            <div className="animate__animated animate__fadeIn  w-full">
+                <div className="flex items-center gap-4" >
                   <input
                     type="text"
                     name="location"

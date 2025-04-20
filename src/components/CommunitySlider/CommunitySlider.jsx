@@ -21,7 +21,7 @@ const CommunitySlider = () => {
   ];
 
   return (
-    <div className="w-full px-4 py-8 bg-gray-50 relative">
+    <div className="w-full bg-gray-50 relative">
       <div className="max-w-7xl mx-auto relative px-10">
         <Swiper
           ref={swiperRef}
