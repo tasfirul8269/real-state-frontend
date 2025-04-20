@@ -57,7 +57,7 @@ const OffPlanProperties = () => {
             </div>
             
             {/* Property Details */}
-            <div className=" pl-5">
+            <div className="p-6 border border-gray-300">
               <h2 className="text-xl font-semibold text-gray-800 mb-2">{property.name}</h2>
               <p className="text-gray-600 mb-4 flex items-center">
                 <FaMapMarkerAlt className="mr-2" /> {property.location}

@@ -1,7 +1,6 @@
 import React from "react";
 import Banner from "../../components/Banner/Banner";
 import SearchField from "../../components/SearchField/SearchField";
-import TestimonialCard from "../../components/TestimonialCard/TestimonialCard";
 import Services from "../../components/Services/Services";
 import OffPlanProperties from "../../components/OffPlanProperties/OffPlanProperties";
 import PropertySearchTabs from "../../components/PropertySearchByFeature/PropertySearchByFeature";
@@ -15,7 +14,6 @@ const Home = () => {
         <SearchField></SearchField>
         </div>
       </div>
-      <TestimonialCard></TestimonialCard>
       <Services></Services>
       <OffPlanProperties></OffPlanProperties>
       <PropertySearchTabs></PropertySearchTabs>
