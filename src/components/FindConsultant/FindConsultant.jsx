@@ -34,7 +34,7 @@ const FindConsultant = () => {
       ];
   return (
     <div 
-    className=" mx-auto p-0 animate__animated animate__fadeIn flex justify-around items-center border py-3 container rounded-xl bg-radial-[at_50%_75%] from-sky-400 via-blue-400 to-indigo-900 to-90%">
+    className=" mx-auto p-0 animate__animated animate__fadeInUp flex justify-around items-center py-3 container rounded-xl bg-radial-[at_50%_75%] from-sky-400 via-blue-400 to-indigo-900 to-90%">
 
        <div className="flex justify-center items-center gap-0">
             {
