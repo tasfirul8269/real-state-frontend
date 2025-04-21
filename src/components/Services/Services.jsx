@@ -5,7 +5,7 @@ const servicesData = [
   {
     id: 1,
     title: "Residential Sales and Leasing",
-    backgroundImage: "https://i.ibb.co.com/vCzRd74f/undraw-house-searching-g2b8.png",
+    backgroundImage: "https://i.ibb.co.com/SwQHBqXL/residential-background.png",
     buttonText: "Explore Dubai",
     buttonIcon: <FaArrowRight className="ml-2" />,
     hasSearch: false,
@@ -16,7 +16,7 @@ const servicesData = [
   {
     id: 2,
     title: "Commercial Sales and leasing",
-    backgroundImage: "https://i.ibb.co.com/TDvskyZJ/undraw-predictive-analytics-6vi1.png",
+    backgroundImage: "https://i.ibb.co.com/8ys6NDD/commercial.png",
     placeholder: "Name or department",
     hasSearch: true,
     bgColor: "bg-[#f6f6f1]",
@@ -27,7 +27,7 @@ const servicesData = [
   {
     id: 3,
     title: "Property Management",
-    backgroundImage: "https://i.ibb.co.com/KzFvkWRZ/undraw-for-sale-7qjb.png",
+    backgroundImage: "https://i.ibb.co.com/0Vzn7Rp5/property-management.png",
     placeholder: "Name or department",
     hasSearch: true,
     bgColor: "bg-[#f6f6f1]",
@@ -39,15 +39,15 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <div className="mx-auto px-4 py-12 grid md:grid-cols-3 gap-8  my-14">
+    <div className="mx-auto px-4 py-12 grid md:grid-cols-3 gap-8  my-14 container ">
       {servicesData.map((service) => (
         <div
           key={service.id}
-          style={{backgroundImage: `url(${service.backgroundImage})`}}
-          className={`card ${service.bgColor} shadow-xl relative h-72 object- text-start border border-gray-400`}
+          className={`card ${service.bgColor} relative text-start`}
         >
+          <img className="relative  border border-gray-300 rounded-xl" src={service.backgroundImage}  />
           <div className=" absolute left-[5%] top-[10%]">
-            <h2 className={`card-title text-3xl w-full font-semibold ${service.textColor}`}>
+            <h2 className={`card-title text-3xl w-[75%] font-semibold ${service.textColor}`}>
               {service.title}
             </h2>
             
