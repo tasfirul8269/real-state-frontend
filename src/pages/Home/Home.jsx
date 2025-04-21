@@ -4,6 +4,7 @@ import SearchField from "../../components/SearchField/SearchField";
 import Services from "../../components/Services/Services";
 import OffPlanProperties from "../../components/OffPlanProperties/OffPlanProperties";
 import PropertySearchTabs from "../../components/PropertySearchByFeature/PropertySearchByFeature";
+import FindConsultant from "../../components/FindConsultant/FindConsultant";
 
 const Home = () => {
   return (
@@ -15,6 +16,7 @@ const Home = () => {
         </div>
       </div>
       <Services></Services>
+      <FindConsultant></FindConsultant>
       <OffPlanProperties></OffPlanProperties>
       <PropertySearchTabs></PropertySearchTabs>
     </div>
