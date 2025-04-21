@@ -39,14 +39,14 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <div className="mx-auto px-4 py-12 grid md:grid-cols-3 gap-8 p-10 my-10">
+    <div className="mx-auto px-4 py-12 grid md:grid-cols-3 gap-8  my-14">
       {servicesData.map((service) => (
         <div
           key={service.id}
-          style={{ backgroundImage: `url(${service.backgroundImage})` }}
-          className={`card ${service.bgColor} shadow-xl hover:shadow-2xl transition-shadow py-24 text-start`}
+          style={{backgroundImage: `url(${service.backgroundImage})`}}
+          className={`card ${service.bgColor} shadow-xl relative h-72 object- text-start border border-gray-400`}
         >
-          <div className="card-body w-2/3">
+          <div className=" absolute left-[5%] top-[10%]">
             <h2 className={`card-title text-3xl w-full font-semibold ${service.textColor}`}>
               {service.title}
             </h2>
