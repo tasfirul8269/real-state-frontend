@@ -17,19 +17,118 @@ const PropertySearchBar = () => {
     baths: "" 
   });
 
-  const propertyTypes = ["Apartment", "Penthouse", "Villa", "Land", "Townhouse", "Duplex"];
   
+  // Dynamic data
+  const propertyTypes = ["Apartment", "Penthouse", "Villa", "Land", "Townhouse","Duplex"];
   const buyPriceRanges = [
     { 
       label: "Min Price", 
       values: [
-        "AED 300000", "AED 400000", "AED 500000", "AED 50000000"
+        "AED 300000" ,
+        "AED 400000" ,
+        "AED 500000" ,
+        "AED 600000" ,
+        "AED 700000" ,
+        "AED 800000" ,
+        "AED 900000" ,
+        "AED 1000000",
+        "AED 1100000",
+        "AED 1200000",
+        "AED 1300000",
+        "AED 1400000",
+        "AED 1500000",
+        "AED 1600000",
+        "AED 1700000",
+        "AED 1800000",
+        "AED 1900000",
+        "AED 2000000",
+        "AED 2100000",
+        "AED 2200000",
+        "AED 2300000",
+        "AED 2400000",
+        "AED 2500000",
+        "AED 2600000",
+        "AED 2700000",
+        "AED 2800000",
+        "AED 2900000",
+        "AED 3000000",
+        "AED 3250000",
+        "AED 3750000",
+        "AED 4000000",
+        "AED 4250000",
+        "AED 5000000",
+        "AED 6000000",
+        "AED 7000000",
+        "AED 8000000",
+        "AED 9000000",
+        "AED 10000000",
+        "AED 12500000",
+        "AED 15000000",
+        "AED 17500000",
+        "AED 20000000",
+        "AED 22500000",
+        "AED 25000000",
+        "AED 27500000",
+        "AED 30000000",
+        "AED 35000000",
+        "AED 40000000",
+        "AED 45000000",
+        "AED 50000000",
       ] 
     },
     { 
-      label: "Max Price",
+      label: "Max Price" ,
       values: [
-        "AED 300000", "AED 400000", "AED 500000", "AED 50000000"
+        "AED 300000" ,
+        "AED 400000" ,
+        "AED 500000" ,
+        "AED 600000" ,
+        "AED 700000" ,
+        "AED 800000" ,
+        "AED 900000" ,
+        "AED 1000000",
+        "AED 1100000",
+        "AED 1200000",
+        "AED 1300000",
+        "AED 1400000",
+        "AED 1500000",
+        "AED 1600000",
+        "AED 1700000",
+        "AED 1800000",
+        "AED 1900000",
+        "AED 2000000",
+        "AED 2100000",
+        "AED 2200000",
+        "AED 2300000",
+        "AED 2400000",
+        "AED 2500000",
+        "AED 2600000",
+        "AED 2700000",
+        "AED 2800000",
+        "AED 2900000",
+        "AED 3000000",
+        "AED 3250000",
+        "AED 3750000",
+        "AED 4000000",
+        "AED 4250000",
+        "AED 5000000",
+        "AED 6000000",
+        "AED 7000000",
+        "AED 8000000",
+        "AED 9000000",
+        "AED 10000000",
+        "AED 12500000",
+        "AED 15000000",
+        "AED 17500000",
+        "AED 20000000",
+        "AED 22500000",
+        "AED 25000000",
+        "AED 27500000",
+        "AED 30000000",
+        "AED 35000000",
+        "AED 40000000",
+        "AED 45000000",
+        "AED 50000000",
       ] 
     }
   ];
@@ -38,18 +137,115 @@ const PropertySearchBar = () => {
     { 
       label: "Min Price", 
       values: [
-        "AED 300000", "AED 400000", "AED 500000", "AED 50000000"
+        "AED 300000" ,
+        "AED 400000" ,
+        "AED 500000" ,
+        "AED 600000" ,
+        "AED 700000" ,
+        "AED 800000" ,
+        "AED 900000" ,
+        "AED 1000000",
+        "AED 1100000",
+        "AED 1200000",
+        "AED 1300000",
+        "AED 1400000",
+        "AED 1500000",
+        "AED 1600000",
+        "AED 1700000",
+        "AED 1800000",
+        "AED 1900000",
+        "AED 2000000",
+        "AED 2100000",
+        "AED 2200000",
+        "AED 2300000",
+        "AED 2400000",
+        "AED 2500000",
+        "AED 2600000",
+        "AED 2700000",
+        "AED 2800000",
+        "AED 2900000",
+        "AED 3000000",
+        "AED 3250000",
+        "AED 3750000",
+        "AED 4000000",
+        "AED 4250000",
+        "AED 5000000",
+        "AED 6000000",
+        "AED 7000000",
+        "AED 8000000",
+        "AED 9000000",
+        "AED 10000000",
+        "AED 12500000",
+        "AED 15000000",
+        "AED 17500000",
+        "AED 20000000",
+        "AED 22500000",
+        "AED 25000000",
+        "AED 27500000",
+        "AED 30000000",
+        "AED 35000000",
+        "AED 40000000",
+        "AED 45000000",
+        "AED 50000000",
       ] 
     },
     { 
-      label: "Max Price",
+      label: "Max Price" ,
       values: [
-        "AED 300000", "AED 400000", "AED 500000", "AED 50000000"
+        "AED 300000" ,
+        "AED 400000" ,
+        "AED 500000" ,
+        "AED 600000" ,
+        "AED 700000" ,
+        "AED 800000" ,
+        "AED 900000" ,
+        "AED 1000000",
+        "AED 1100000",
+        "AED 1200000",
+        "AED 1300000",
+        "AED 1400000",
+        "AED 1500000",
+        "AED 1600000",
+        "AED 1700000",
+        "AED 1800000",
+        "AED 1900000",
+        "AED 2000000",
+        "AED 2100000",
+        "AED 2200000",
+        "AED 2300000",
+        "AED 2400000",
+        "AED 2500000",
+        "AED 2600000",
+        "AED 2700000",
+        "AED 2800000",
+        "AED 2900000",
+        "AED 3000000",
+        "AED 3250000",
+        "AED 3750000",
+        "AED 4000000",
+        "AED 4250000",
+        "AED 5000000",
+        "AED 6000000",
+        "AED 7000000",
+        "AED 8000000",
+        "AED 9000000",
+        "AED 10000000",
+        "AED 12500000",
+        "AED 15000000",
+        "AED 17500000",
+        "AED 20000000",
+        "AED 22500000",
+        "AED 25000000",
+        "AED 27500000",
+        "AED 30000000",
+        "AED 35000000",
+        "AED 40000000",
+        "AED 45000000",
+        "AED 50000000",
       ] 
     }
   ];
-  
-  const bedOptions = ["All", "Studio", "1", "2", "3", "4", "5", "7+"];
+  const bedOptions = ["All","Studio", "1", "2", "3", "4", "5", "7+"];
   const bathOptions = ["All", "1", "2", "3", "4", "5", "7+"]; 
 
   const handleInputChange = (e) => {
@@ -62,6 +258,7 @@ const PropertySearchBar = () => {
 
   const handleSearch = () => {
     console.log("Searching with parameters:", searchParams);
+    // API call or filtering logic would go here
   };
 
   return (
@@ -127,7 +324,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Property Type</option>
                       {propertyTypes.map((type, index) => (
-                        <option key={index} value={type} className="text-center">{type}</option>
+                        <option key={index} value={type} >{type}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -143,7 +340,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Min Price</option>
                       {buyPriceRanges[0].values.map((price, index) => (
-                        <option key={index} value={price} className="text-center">{price}</option>
+                        <option key={index} value={price} >{price}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -159,7 +356,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Max Price</option>
                       {buyPriceRanges[1].values.map((price, index) => (
-                        <option key={index} value={price} className="text-center">{price}</option>
+                        <option key={index} value={price} >{price}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -175,7 +372,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Beds</option>
                       {bedOptions.map((bed, index) => (
-                        <option key={index} value={bed} className="text-center">{bed}</option>
+                        <option key={index} value={bed} >{bed}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -191,7 +388,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Baths</option>
                       {bathOptions.map((bath, index) => (
-                        <option key={index} value={bath} className="text-center">{bath}</option>
+                        <option key={index} value={bath} >{bath}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -222,7 +419,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Property Type</option>
                       {propertyTypes.map((type, index) => (
-                        <option key={index} value={type} className="text-center">{type}</option>
+                        <option key={index} value={type}>{type}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -254,7 +451,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Max Price</option>
                       {rentPriceRanges[1].values.map((price, index) => (
-                        <option key={index} value={price} className="text-center">{price}</option>
+                        <option key={index} value={price}>{price}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -270,7 +467,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Beds</option>
                       {bedOptions.map((bed, index) => (
-                        <option key={index} value={bed} className="text-center">{bed}</option>
+                        <option key={index} value={bed} >{bed}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
@@ -286,7 +483,7 @@ const PropertySearchBar = () => {
                     >
                       <option value="">Baths</option>
                       {bathOptions.map((bath, index) => (
-                        <option key={index} value={bath} className="text-center">{bath}</option>
+                        <option key={index} value={bath}>{bath}</option>
                       ))}
                     </select>
                     <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
