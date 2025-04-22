@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom"; // Added useLocation
+import { useState, useEffect, useRef } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "animate.css";
 import { FaWhatsapp, FaBars, FaTimes } from "react-icons/fa";
 import { IoIosArrowDown } from "react-icons/io";
@@ -12,6 +12,8 @@ const Navbar = () => {
 
   // State for scroll detection
   const [scrolled, setScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const [visible, setVisible] = useState(true);
 
   // Get current route location
   const location = useLocation();
@@ -20,14 +22,32 @@ const Navbar = () => {
   // Effect to handle scroll behavior
   useEffect(() => {
     const handleScroll = () => {
-      // Set scrolled state based on scroll position
-      setScrolled(window.scrollY > 10);
+      const currentScrollY = window.scrollY;
+      
+      // Always show navbar on home page
+      if (isHomePage) {
+        setScrolled(currentScrollY > 10);
+        setLastScrollY(currentScrollY);
+        setVisible(true);
+        return;
+      }
+      
+      // For other pages, implement hide on scroll down, show on scroll up
+      if (currentScrollY > lastScrollY && currentScrollY > 10) {
+        // Scrolling down
+        setVisible(false);
+      } else {
+        // Scrolling up
+        setVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
+      setScrolled(currentScrollY > 10);
     };
-    // Add scroll event listener
-    window.addEventListener("scroll", handleScroll);
-    // Cleanup function to remove event listener
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [lastScrollY, isHomePage]);
 
   // Function to toggle mobile menu
   const toggleMenu = () => {
@@ -56,20 +76,25 @@ const Navbar = () => {
             ? "bg-pink-red shadow-md py-2"
             : "bg-transparent py-4"
           : "bg-pink-red shadow-md py-2"
+      } ${
+        !isHomePage && !visible ? "-translate-y-full" : "translate-y-0"
       }`}
+      style={{
+        transition: isHomePage ? 'all 0.3s ease' : 'transform 0.3s ease, background 0.3s ease'
+      }}
     >
       <div className="container mx-auto px-4">
         {/* Desktop Navbar - hidden on mobile */}
         <div className="hidden md:flex items-center justify-between">
           {/* Logo section */}
           <Link to="/" className="animate__animated animate__fadeIn">
-          <div class="flex justify-center items-center">
+          <div className="flex justify-center items-center">
               <img className="w-24" src={logo} alt="LOGO" />
               <div>
-                <h3 class="text-2xl font-bold tracking-tight text-white">
+                <h3 className="text-2xl font-bold tracking-tight text-white">
                   MATELUXY
                 </h3>
-                <p class="text-lg uppercase tracking-widest text-white">
+                <p className="text-lg uppercase tracking-widest text-white">
                   REAL ESTATE
                 </p>
               </div>
@@ -198,13 +223,13 @@ const Navbar = () => {
         <div className="md:hidden flex items-center justify-between">
           {/* Mobile logo */}
           <Link to="/" className="animate__animated animate__fadeIn">
-          <div class="flex justify-center items-center">
+          <div className="flex justify-center items-center">
               <img className="w-20" src={logo} alt="LOGO" />
               <div>
-                <h3 class="text-xl font-bold tracking-tight text-white">
+                <h3 className="text-xl font-bold tracking-tight text-white">
                   MATELUXY
                 </h3>
-                <p class="text-sm uppercase tracking-widest text-white">
+                <p className="text-sm uppercase tracking-widest text-white">
                   REAL ESTATE
                 </p>
               </div>
