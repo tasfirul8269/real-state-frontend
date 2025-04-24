@@ -1,12 +1,54 @@
-# React + Vite
+# Dubai Real Estate - Property Listings Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![Website Preview](https://i.imgur.com/7X8Jy5T.png)  
+**Live Demo:** [https://real-state-wheat-eight.vercel.app/](https://real-state-wheat-eight.vercel.app/)
 
-Currently, two official plugins are available:
+A modern real estate portal showcasing premium properties in Dubai, featuring Burj Khalifa-view apartments, luxury penthouses, and smart home solutions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Key Features
 
-## Expanding the ESLint configuration
+🏙️ **Core Functionality**
+- Premium property listings with high-resolution media galleries
+- Advanced search filters (price, location, property type)
+- Virtual tour support (images/videos)
+- Agent profiles with language capabilities
+- Instant contact options (Call/WhatsApp/Viewing Booking)
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🖼️ **Media Features**
+- Responsive image/video galleries
+- Animated content transitions
+- Interactive media viewer
+- Thumbnail navigation
+
+📱 **Technical Highlights**
+- Mobile-first responsive design
+- Performance-optimized assets
+- Cross-browser compatibility
+- SEO-friendly structure
+
+## Tech Stack
+
+**Frontend**  
+- React.js + Vite
+- Tailwind CSS (+ Animate.css)
+- React Icons
+- React Router
+
+**Services**  
+- Image Optimization: Cloudinary CDN
+- Hosting: Vercel
+- CI/CD: GitHub Actions
+
+**API**  
+- Mock API Service (JSON data)
+- Axios HTTP Client
+
+## Installation
+
+1. Clone repository:
+```bash
+git clone https://github.com/fahmidurshanto/dubai-real-estate.git2. Install dependencies:
+```bash
+cd dubai-real-estate
+npm install
+2. Run development server:
