@@ -3,44 +3,72 @@ import CommunitySlider from "../../components/CommunitySlider/CommunitySlider";
 import PropertyCard from "../../components/PropertyCard/PropertyCard";
 import PropertySearchBar from "../../components/PropertySearchBar/PropertySearchBar";
 import axios from "axios";
+import { FaClock, FaMapMarkerAlt } from "react-icons/fa";
+import FilterDropdown from "../../components/FilterDropdown/FilterDropdown";
 
 const Buy = () => {
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [checked, setChecked] = useState(false);
 
-   const [properties, setProperties] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const [checked, setChecked] = useState(false);
-
-
-  useEffect(() =>{
-    axios.get('properties.json')
-    .then(res => {
-     setProperties(res.data);
-     setLoading(false); 
-    })
-    .catch(err => {
-      setError(err.message);
-      setLoading(false)
-    })
-  },[])
-
+  useEffect(() => {
+    axios
+      .get("properties.json")
+      .then((res) => {
+        setProperties(res.data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        setError(err.message);
+        setLoading(false);
+      });
+  }, []);
 
   return (
-   <div>
-    <div className="pt-36">
-    <PropertySearchBar></PropertySearchBar>
-    <CommunitySlider></CommunitySlider>
     <div>
-      <h3 className="text-4x text-green-900 font-bold pl-[5%]">Properties for sale in Dubai
-      </h3>
-      <p className="pl-[5%] text-gray-500 font-light">Results: {properties.length}</p>
-    </div>
-    {
-      properties.map(property => <PropertyCard key={property.id} property={property} loading={loading} error={error} checked={checked} setChecked={setChecked}></PropertyCard>)
-    }
+      <div className="pt-36">
+        <PropertySearchBar></PropertySearchBar>
+        <CommunitySlider></CommunitySlider>
+        <div className="flex justify-between items-center container mx-auto">
+        <div>
+          <h3 className="text-4x text-green-900 font-bold pl-[5%]">
+            Properties for sale in Dubai
+          </h3>
 
+          <p className="pl-[5%] text-gray-500 font-light">
+            Results: {properties.length}
+          </p>
+        </div>
+        {/* filter buttons */}
+        <div className="flex items-center space-x-4">
+          {/* Most Recent Filter Button */}
+          {/* <button className="flex items-center px-4 py-2 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
+            <FaClock className="mr-2 text-gray-600" />
+            <span className="font-medium">Most Recent</span>
+          </button> */}
+          <FilterDropdown></FilterDropdown>
+
+          {/* View on Map Button */}
+          <button className="flex items-center px-4 py-2 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
+            <FaMapMarkerAlt className="mr-2 text-gray-600" />
+            <span className="font-medium">View on Map</span>
+          </button>
+        </div>
+        </div>
+        <div></div>
+        {properties.map((property) => (
+          <PropertyCard
+            key={property.id}
+            property={property}
+            loading={loading}
+            error={error}
+            checked={checked}
+            setChecked={setChecked}
+          ></PropertyCard>
+        ))}
+      </div>
     </div>
-   </div>
   );
 };
 

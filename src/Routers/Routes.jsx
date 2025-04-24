@@ -3,6 +3,7 @@ import Layout from "../Layout/Layout";
 import Home from "../pages/Home/Home";
 import Buy from "../pages/Buy/Buy";
 import Rent from "../pages/Rent/Rent";
+import PropertyDetails from "../pages/PropertyDetails/PropertyDetails";
 
 const router = createBrowserRouter([
     {
@@ -21,6 +22,12 @@ const router = createBrowserRouter([
                 path: "/rent",
                 element: <Rent></Rent>
             },
+            {
+                path: "property/:id",
+                
+                element: <PropertyDetails></PropertyDetails>
+
+            }
            
         ]
     }

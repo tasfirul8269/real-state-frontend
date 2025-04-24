@@ -23,16 +23,16 @@ const PropertyCard = ({ property, loading, error }) => {
   if (!property) return null;
 
   return (
-    <div className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-6  border border-spacing-0.5 border-gray-200 my-6 h-1/2 shadow-xl">
+    <Link to={property.id} className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-6  border border-spacing-0.5 border-gray-200 my-6 h-1/2 shadow-xl">
       {/* image container */}
-      <div className=" flex gap-4 animate__animated animate__fadeInUp rounded-md">
+      <div className=" flex gap-1 animate__animated animate__fadeInUp rounded-md">
         {/* Main Image */}
         <img
           src={property.mainImage}
           alt={property.title}
           className="w-2/3 h-full  object-cover grow-2 rounded-md"
         />
-        <div className="flex w-1/3  flex-col gap-4">
+        <div className="flex w-1/3  flex-col gap-1">
           {property.galleryImages.slice(0, 3).map((image, index) => (
             <img src={image} className="w-full h-full rounded-md" key={index} />
           ))}
@@ -127,7 +127,7 @@ const PropertyCard = ({ property, loading, error }) => {
           </button>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 
