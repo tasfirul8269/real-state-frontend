@@ -7,7 +7,7 @@ import { FaClock, FaMapMarkerAlt } from "react-icons/fa";
 import { RiArrowDropDownLine } from "react-icons/ri";
 import FilterDropdown from "../../components/FilterDropdown/FilterDropdown";
 
-const Buy = () => {
+const Rent = () => {
   const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -44,11 +44,6 @@ const Buy = () => {
         {/* filter buttons */}
         <div className="flex items-center space-x-4">
           {/* Most Recent Filter Button */}
-          {/* <button className="flex items-center px-4 py-4 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
-            <FaClock className="mr-2 text-gray-600" />
-            <span className="font-medium">Most Recent</span>
-            <RiArrowDropDownLine className="mr-2 text-gray-600 text-2xl" />
-          </button> */}
 
             <FilterDropdown></FilterDropdown>
 
@@ -76,4 +71,4 @@ const Buy = () => {
   );
 };
 
-export default Buy;
+export default Rent;
