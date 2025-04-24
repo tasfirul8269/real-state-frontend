@@ -1,6 +1,7 @@
 import "animate.css";
 import { FaPhone, FaWhatsapp, FaCalendarAlt } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const PropertyCard = ({ property, loading, error }) => {
   console.log(property);
@@ -19,9 +20,9 @@ const PropertyCard = ({ property, loading, error }) => {
   if (!property) return null;
 
   return (
-    <div className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-6  border border-spacing-0.5 border-gray-200 my-6">
+    <div className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-6  border border-spacing-0.5 border-gray-200 my-6 h-1/2">
       {/* image container */}
-      <div className="h-2/3 grid md:grid-cols-2 gap-4 animate__animated animate__fadeInUp rounded-md">
+      <div className=" grid md:grid-cols-2 gap-4 animate__animated animate__fadeInUp rounded-md">
         {/* Main Image */}
         <img
           src={property.mainImage}
@@ -74,7 +75,7 @@ const PropertyCard = ({ property, loading, error }) => {
         </div>
 
         {/* Agent Information */}
-        <div className="flex justify-between items-center p-4 gap-4">
+        <div className="flex justify-between items-center gap-4">
           <img
             src={property.agent.photo}
             className="w-20 h-20 rounded-xl"
@@ -85,22 +86,22 @@ const PropertyCard = ({ property, loading, error }) => {
             <p className="text-sm text-gray-400">
               Speaks:{" "}
               {property.agent.languages.map((language, index) => (
-                <span key={index}> {language}</span>
+                <span key={index}> {language},</span>
               ))}
             </p>
           </div>
         </div>
 
         {/* Action Buttons */}
-        <div className="flex justify-center items-center gap-6 border-t border-gray-200 py-10">
+        <div onClick={() => { window.location.href = "tel:+1234567890"; }} className="flex justify-center items-center gap-6 border-t border-gray-200 py-10">
           <button className="btn btn-outline border-none py-3 flex items-center justify-center text-red-950 hover:bg-red-50 transition-colors">
             <FaPhone className="mr-2" />
             <span>Call</span>
           </button>
-          <button className="btn btn-outline border-none py-3 flex items-center justify-center text-red-950 hover:bg-red-50 transition-colors">
+          <Link to="https://wa.me/1234567890" target="_blank" rel="noopener noreferrer" className="btn btn-outline border-none py-3 flex items-center justify-center text-red-950 hover:bg-red-50 transition-colors">
             <FaWhatsapp className="mr-2" />
             <span>Whatsapp</span>
-          </button>
+          </Link>
           <button className="btn btn-outline border-none py-3 flex items-center justify-center text-red-950 hover:bg-red-50 transition-colors">
             <FaCalendarAlt className="mr-2" />
             <span>Book a Viewing</span>

@@ -63,8 +63,8 @@ const Navbar = () => {
 
   // Data for Commercial dropdown menu items
   const commercialMenuList = [
-    { id: 1, name: "Commercial Properties For Sell", link: "for-sell" },
-    { id: 2, name: "Commercial Properties For Rent", link: "for-rent" },
+    { id: 1, name: "Commercial Properties For Sell", link: "buy" },
+    { id: 2, name: "Commercial Properties For Rent", link: "rent" },
   ];
 
   return (
