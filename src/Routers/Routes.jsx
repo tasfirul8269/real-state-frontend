@@ -20,7 +20,8 @@ const router = createBrowserRouter([
             {
                 path: "/rent",
                 element: <Rent></Rent>
-            }
+            },
+           
         ]
     }
 ])
