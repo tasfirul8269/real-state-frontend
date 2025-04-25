@@ -26,49 +26,49 @@ const PropertyCard = ({ property, loading, error }) => {
     to="/property-details"
     className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-4 border border-spacing-0.5 border-gray-200 my-6 min-h-[50vh]  overflow-hidden"
   >
-    {/* image container remains unchanged */}
-    <Link to="/property-details" className="flex gap-1 animate__animated animate__fadeInUp rounded-md w-3/3  h-full min-h-0">
-      {/* Main Media */}
-      {property.mainImage.match(/\.(mp4|mov|avi)$/i) ? (
-        <video
-          src={property.mainImage}
-          className="w-2/3 h-full object-cover grow-2 rounded-md"
-          controls
-          muted
-          loop
-        />
-      ) : (
-        <img
-          src={property.mainImage}
-          alt={property.title}
-          className="w-2/4 h-full object-cover grow-2 rounded-md"
-        />
-      )}
-  
-      <div className="flex w-1/4 flex-col gap-1">
-        {property.galleryImages
-          .slice(0, 3)
-          .map((media, index) =>
-            media.match(/\.(mp4|mov|avi)$/i) ? (
-              <video
-                key={index}
-                src={media}
-                className="w-full h-full object-cover rounded-md"
-                controls
-                muted
-                loop
-              />
-            ) : (
-              <img
-                key={index}
-                src={media}
-                alt=""
-                className="w-full h-full object-cover rounded-md"
-              />
-            )
-          )}
-      </div>
-    </Link>
+     {/* Image container with video fixes */}
+     <Link to="/property-details" className="flex gap-1 animate__animated animate__fadeInUp rounded-md w-3/3 h-full min-h-0">
+        {/* Main Media */}
+        {property.mainImage.match(/\.(mp4|mov|avi)$/i) ? (
+          <video
+            src={property.mainImage}
+            className="w-2/3 h-full object-cover grow rounded-md" // Changed from grow-2 to grow
+            controls
+            muted
+            loop
+          />
+        ) : (
+          <img
+            src={property.mainImage}
+            alt={property.title}
+            className="w-2/4 h-full object-cover grow-2 rounded-md"
+          />
+        )}
+
+        <div className="flex w-1/4 flex-col gap-1">
+          {property.galleryImages
+            .slice(0, 3)
+            .map((media, index) =>
+              media.match(/\.(mp4|mov|avi)$/i) ? (
+                <video
+                  key={index}
+                  src={media}
+                  className="w-full h-full object-cover rounded-md" // Added h-full
+                  controls
+                  muted
+                  loop
+                />
+              ) : (
+                <img
+                  key={index}
+                  src={media}
+                  alt=""
+                  className="w-full h-full object-cover rounded-md"
+                />
+              )
+            )}
+        </div>
+      </Link>
   
    {/* Property details container with spacing adjustments */}
    <div className="flex flex-col items-start justify-start animate__animated animate__fadeInUp h-full overflow-y-auto pr-2">
@@ -80,7 +80,7 @@ const PropertyCard = ({ property, loading, error }) => {
           </div>
           <div className="flex items-center text-sm text-gray-600">
             <MdLocationOn className="mr-1" />
-            <span className="text-red-800">{property.location}</span>
+            <span className="text-red-800">{property.location.address}</span>
           </div>
   
           {/* Property Features */}
