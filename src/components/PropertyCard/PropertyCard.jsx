@@ -24,7 +24,7 @@ const PropertyCard = ({ property, loading, error }) => {
   return (
     <div
     to="/property-details"
-    className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-4 border border-spacing-0.5 border-gray-200 my-6 min-h-[50vh] shadow-xl overflow-hidden"
+    className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-4 border border-spacing-0.5 border-gray-200 my-6 min-h-[50vh]  overflow-hidden"
   >
     {/* image container remains unchanged */}
     <Link to="/property-details" className="flex gap-1 animate__animated animate__fadeInUp rounded-md w-3/3  h-full min-h-0">
