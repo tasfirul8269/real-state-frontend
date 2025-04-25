@@ -24,7 +24,7 @@ const PropertyCard = ({ property, loading, error }) => {
   return (
     <div
     to="/property-details"
-    className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-4 border border-spacing-0.5 border-gray-200 my-6 min-h-[40vh] shadow-xl overflow-hidden"
+    className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-4 border border-spacing-0.5 border-gray-200 my-6 min-h-[50vh] shadow-xl overflow-hidden"
   >
     {/* image container remains unchanged */}
     <Link to="/property-details" className="flex gap-1 animate__animated animate__fadeInUp rounded-md w-3/3  h-full min-h-0">
@@ -87,7 +87,7 @@ const PropertyCard = ({ property, loading, error }) => {
           <div className="flex flex-wrap justify-start items-center">
             {property.features.map((feature, index) => (
               <h2
-                className="text-xl font-bold text-gray-600"
+                className="text-xl font-semibold text-black"
                 key={index}
               >
                 {feature} |{" "}
@@ -113,7 +113,7 @@ const PropertyCard = ({ property, loading, error }) => {
         </div>
   
         {/* Agent Information */}
-        <div className="flex items-center gap-4 pb-0">
+        <div className="flex items-center gap-6 mt-7 pb-0">
           <img
             src={property.agent.photo}
             className="w-12 h-12 rounded-xl"
