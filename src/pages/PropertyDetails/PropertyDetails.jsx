@@ -1,16 +1,25 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiOutlineFullscreen } from "react-icons/ai";
-import { CiLocationOn } from "react-icons/ci";
-import { FaRegCalendarAlt, FaRegQuestionCircle, FaWhatsapp } from "react-icons/fa";
+import { CiLocationOn, CiShare2 } from "react-icons/ci";
+import {
+  FaEnvelope,
+  FaFacebook,
+  FaLink,
+  FaRegCalendarAlt,
+  FaRegQuestionCircle,
+  FaTwitter,
+  FaWhatsapp,
+} from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { IoMdPhotos } from "react-icons/io";
 import { IoBedOutline, IoBookOutline, IoCallOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
-import {  LuMapPin } from "react-icons/lu";
+import { LuMapPin } from "react-icons/lu";
 import { MdDone } from "react-icons/md";
 import SimpleMap from "../../components/SimpleMap/SimpleMap";
 import { RiInformationLine } from "react-icons/ri";
+import { Link } from "react-router-dom";
 
 const PropertyDetails = () => {
   const [propertyDetails, setPropertyDetails] = useState(null);
@@ -55,153 +64,256 @@ const PropertyDetails = () => {
   }
 
   return (
-<div className="flex flex-col items-center">
-// Image container 
-<div className="max-w-5xl mx-auto h-[500px] pt-32 relative">
-  <div className="grid grid-cols-1 md:grid-cols-2 h-full gap-1">
-    {/* Main Image Column */}
-    <div className="h-full relative rounded-lg overflow-hidden">
-      <img
-        src={propertyDetails.mainImage}
-        alt="Main Property"
-        className="w-full h-full object-cover"
-        style={{ aspectRatio: "3/2" }}
-      />
-      <div className="absolute inset-0 bg-black/0" />
-    </div>
-
-    {/* Gallery Grid Column */}
-    <div className="h-full w-full grid grid-cols-2 gap-1">
-      {propertyDetails.galleryImages.slice(0,4).map((image, index) => (
-        <div
-          key={index}
-          className="relative h-[100%] w-[100%] aspect-square"
-        >
-          <img
-            src={image}
-            alt={`Gallery Image ${index + 1}`}
-            className="w-full h-full object-cover rounded-lg"
-          />
-          <div className="absolute inset-0 bg-black/0" />
-        </div>
-      ))}
-    </div>
-  </div>
-
-  {/* Media buttons - positioned 2rem below container */}
-  <div className="absolute left-0 z-10 p-4 flex gap-2" style={{ top: 'calc(100% + 2rem)' }}>
-    <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
-      <IoMdPhotos className="text-lg" /> 
-      Photos {propertyDetails.galleryImages.length}
-    </button>
-    <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
-      <LuMapPin className="text-lg" /> 
-      Map
-    </button>
-    <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
-      <IoBookOutline className="text-lg" /> 
-      Brochure
-    </button>
-  </div>
-</div>
-
-{/* Property details container */}
-<div className=" w-full container mx-auto mt-44 flex items-center justify-center">
-  {/* Left content (60%) */}
-  <div className=" p-10 space-y-4 flex-[3]">
-    <h3 className="text-2xl font-bold">{propertyDetails.price}</h3>
-      <p className="text-sm font-semibold text-gray-600">{propertyDetails.title}</p>
-
-        <div className="grid grid-cols-2">
-          <p className="text-sm font-medium flex items-center gap-2 py-3"><AiOutlineFullscreen />  <span className="font-light">BAU: </span> {propertyDetails.area} sq.ft</p>
-          <p className="text-sm font-medium flex items-center gap-2 py-3"><IoBedOutline /><span className="font-light">Bedrooms: </span> {propertyDetails.bedrooms}</p>
-          <p className="text-sm font-medium flex items-center gap-2 py-3"><LiaBathSolid/> <span className="font-light">Bathrooms: </span> {propertyDetails.bathrooms}</p>
-          <p className="text-sm font-medium flex items-center gap-2 py-3"><FaRegQuestionCircle /><span className="font-light">Completion Status: </span> {propertyDetails.type}</p>
-        </div>
-        <p className="text-sm font-light text-gray-600">{propertyDetails.description}</p>
-
-        {/* divider */}
-        <div className="border border-0.5 border-gray-100 my-10"></div>
-
-        {/* features */}
-        <div>
-          <h3 className="text-md font-bold">Features</h3>
-          <p className="text-sm font-medium grid grid-cols-2 gap-2">{
-            propertyDetails.features.map((feature, index) => (
-              <span className="flex items-center gap-2 py-3" key={index}><GoDotFill /> {feature},</span>
-            ))
-          }</p>
-        </div>
-         {/* divider */}
-         <div className="border border-0.5 border-gray-100 my-10"></div>
-        {/* amenities */}
-        <div>
-          <h3 className="text-md font-bold">Amenities</h3>
-          <p className="text-sm grid grid-cols-2 gap-2 font-medium ">{
-            propertyDetails.amenities.map((amenities, index) => (
-              <span className="flex items-center gap-2 py-3" key={index}><MdDone  /> {amenities},</span>
-            ))
-          }</p>
-        </div>
-           {/* divider */}
-           <div className="border border-0.5 border-gray-100 my-10"></div>
-
-          {/* location */}
-           <div>
-          <h3 className="text-md font-bold">Location</h3>
-          <p className="text-sm flex items-center gap-2 my-3 font-medium "><CiLocationOn /> {" "}{propertyDetails.location.address}</p>
-        </div>
-        <SimpleMap coordinates={propertyDetails.location.coordinates}></SimpleMap>
-        {/* divider */}
-           <div className="border border-0.5 border-gray-100 my-10"></div>
-           {/* Dld permit information */}
-          <div className="flex items-center gap-4">
-          <img src={propertyDetails.dldPermitInfo.permitQrCode} className="w-16"  />
-           <div>
-            <h3 className="text-md font-bold flex items-center gap-2">DLD Permit Information {" "} <button className="tooltip tooltip-right	"  data-tip="The Dubai Land Department strongly advises all customers and investors to only engage with real estate advertisements that feature the QR Code">
-            <RiInformationLine className="cursor-pointer"  /></button></h3>
-            <p className="text-sm font-medium grid grid-cols-2 gap-2">{propertyDetails.dldPermitInfo.permitNumber}</p>
-           </div>
+    <div className="flex flex-col items-center">
+      // Image container
+      <div className="max-w-5xl mx-auto h-[500px] pt-32 relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 h-full gap-1">
+          {/* Main Image Column */}
+          <div className="h-full relative rounded-lg overflow-hidden">
+            <img
+              src={propertyDetails.mainImage}
+              alt="Main Property"
+              className="w-full h-full object-cover"
+              style={{ aspectRatio: "3/2" }}
+            />
+            <div className="absolute inset-0 bg-black/0" />
           </div>
 
-  </div>
+          {/* Gallery Grid Column */}
+          <div className="h-full w-full grid grid-cols-2 gap-1">
+            {propertyDetails.galleryImages.slice(0, 4).map((image, index) => (
+              <div
+                key={index}
+                className="relative h-[100%] w-[100%] aspect-square"
+              >
+                <img
+                  src={image}
+                  alt={`Gallery Image ${index + 1}`}
+                  className="w-full h-full object-cover rounded-lg"
+                />
+                <div className="absolute inset-0 bg-black/0" />
+              </div>
+            ))}
+          </div>
+        </div>
 
-  {/* Right sticky sidebar (40%) */}
-  <div className="border p-10 flex-[1.3] sticky top-0 self-start h-fit">
-    {/* Your sticky content here */}
-    <div className="sticky top-4">
-      {/* Inner content that stays sticky */}
-
-
-     <div className="flex items-center gap-4">
-     <img className="w-20 h-20 rounded-md" src="https://ggfx-handh3.s3.eu-west-2.amazonaws.com/x/170ct200/Musa_Sanusi_hausandhaus_2023_ES_5bc1e962b3.webp" alt="Agent Image" />
-      
-      <div className="space-y-2">
-      <h3 className="text-md font-bold">{propertyDetails.agent.name}</h3>
-       <p className="text-sm text-gray-500">{propertyDetails.agent.role}</p>
-       <p className="text-sm font-semibold text-gray-500 flex items-center gap-2">
-         Speaks: 
-         {
-           propertyDetails.agent.languages.map((lang, index) => <span className="font-medium" key={index}>{lang},</span>)
-         }
-       </p>
+        {/* Media buttons - positioned 2rem below container */}
+        <div
+          className="absolute left-0 z-10 p-4 flex gap-2"
+          style={{ top: "calc(100% + 2rem)" }}
+        >
+          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
+            <IoMdPhotos className="text-lg" />
+            Photos {propertyDetails.galleryImages.length}
+          </button>
+          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
+            <LuMapPin className="text-lg" />
+            Map
+          </button>
+          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
+            <IoBookOutline className="text-lg" />
+            Brochure
+          </button>
+        </div>
       </div>
-     </div>
-     {/* agent section buttons  */}
-     <div className="flex items-center gap-5 my-10 text-center">
-         <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full"><IoCallOutline />Call</button>
-         <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full"><FaWhatsapp />Whatsapp</button>
-     </div>
-         <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full mx-auto w-full justify-center"><FaRegCalendarAlt  />Book a viewing</button>
+      {/* Property details container */}
+      <div className=" w-full container mx-auto mt-44 flex items-center justify-center">
+        {/* Left content (60%) */}
+        <div className=" p-10 space-y-4 flex-[3]">
+          <h3 className="text-2xl font-bold">{propertyDetails.price}</h3>
+          <p className="text-sm font-semibold text-gray-600">
+            {propertyDetails.title}
+          </p>
+
+          <div className="grid grid-cols-2">
+            <p className="text-sm font-medium flex items-center gap-2 py-3">
+              <AiOutlineFullscreen /> <span className="font-light">BAU: </span>{" "}
+              {propertyDetails.area} sq.ft
+            </p>
+            <p className="text-sm font-medium flex items-center gap-2 py-3">
+              <IoBedOutline />
+              <span className="font-light">Bedrooms: </span>{" "}
+              {propertyDetails.bedrooms}
+            </p>
+            <p className="text-sm font-medium flex items-center gap-2 py-3">
+              <LiaBathSolid /> <span className="font-light">Bathrooms: </span>{" "}
+              {propertyDetails.bathrooms}
+            </p>
+            <p className="text-sm font-medium flex items-center gap-2 py-3">
+              <FaRegQuestionCircle />
+              <span className="font-light">Completion Status: </span>{" "}
+              {propertyDetails.type}
+            </p>
+          </div>
+          <p className="text-sm font-light text-gray-600">
+            {propertyDetails.description}
+          </p>
+
+          {/* divider */}
+          <div className="border border-0.5 border-gray-100 my-10"></div>
+
+          {/* features */}
+          <div>
+            <h3 className="text-md font-bold">Features</h3>
+            <p className="text-sm font-medium grid grid-cols-2 gap-2">
+              {propertyDetails.features.map((feature, index) => (
+                <span className="flex items-center gap-2 py-3" key={index}>
+                  <GoDotFill /> {feature},
+                </span>
+              ))}
+            </p>
+          </div>
+          {/* divider */}
+          <div className="border border-0.5 border-gray-100 my-10"></div>
+          {/* amenities */}
+          <div>
+            <h3 className="text-md font-bold">Amenities</h3>
+            <p className="text-sm grid grid-cols-2 gap-2 font-medium ">
+              {propertyDetails.amenities.map((amenities, index) => (
+                <span className="flex items-center gap-2 py-3" key={index}>
+                  <MdDone /> {amenities},
+                </span>
+              ))}
+            </p>
+          </div>
+          {/* divider */}
+          <div className="border border-0.5 border-gray-100 my-10"></div>
+
+          {/* location */}
+          <div>
+            <h3 className="text-md font-bold">Location</h3>
+            <p className="text-sm flex items-center gap-2 my-3 font-medium ">
+              <CiLocationOn /> {propertyDetails.location.address}
+            </p>
+          </div>
+          <SimpleMap
+            coordinates={propertyDetails.location.coordinates}
+          ></SimpleMap>
+          {/* divider */}
+          <div className="border border-0.5 border-gray-100 my-10"></div>
+          {/* Dld permit information */}
+          <div className="flex items-center gap-4 bg-[#d4d4d4] p-5">
+            <img
+              src={propertyDetails.dldPermitInfo.permitQrCode}
+              className="w-16"
+            />
+            <div className="space-y-2">
+              <h3 className="text-md font-bold flex items-center gap-2">
+                DLD Permit Information{" "}
+                <button
+                  className="tooltip tooltip-right	"
+                  data-tip="The Dubai Land Department strongly advises all customers and investors to only engage with real estate advertisements that feature the QR Code"
+                >
+                  <RiInformationLine className="cursor-pointer" />
+                </button>
+              </h3>
+              <p className="text-sm font-medium grid grid-cols-2 gap-2">
+                {propertyDetails.dldPermitInfo.permitNumber}
+              </p>
+              <p className="text-sm font-light text-gray-600">This property listing has been reviewed and verified by Dubai Land Department</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Right sticky sidebar (40%) */}
+        <div className=" p-10 flex-[1.3] sticky top-0 self-start h-fit">
+          {/* Your sticky content here */}
+          <div className="sticky top-4">
+            {/* Inner content that stays sticky */}
+
+          <div className="border border-0.5 border-gray-200 p-10 shadow-md">
+
+          <div className="flex items-center gap-4">
+              <img
+                className="w-20 h-20 rounded-md"
+                src="https://ggfx-handh3.s3.eu-west-2.amazonaws.com/x/170ct200/Musa_Sanusi_hausandhaus_2023_ES_5bc1e962b3.webp"
+                alt="Agent Image"
+              />
+
+              <div className="space-y-2">
+                <h3 className="text-md font-bold">
+                  {propertyDetails.agent.name}
+                </h3>
+                <p className="text-sm text-gray-500">
+                  {propertyDetails.agent.role}
+                </p>
+                <p className="text-sm font-semibold text-gray-500 flex items-center gap-2">
+                  Speaks:
+                  {propertyDetails.agent.languages.map((lang, index) => (
+                    <span className="font-medium" key={index}>
+                      {lang},
+                    </span>
+                  ))}
+                </p>
+              </div>
+            </div>
+            {/* agent section buttons  */}
+            <div className="flex items-center gap-5 my-10 text-center">
+              <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full">
+                <IoCallOutline />
+                Call
+              </button>
+              <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full">
+                <FaWhatsapp />
+                Whatsapp
+              </button>
+            </div>
+            <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full mx-auto w-full justify-center">
+              <FaRegCalendarAlt />
+              Book a viewing
+            </button>
+
+            <div className="relative group">
+              <button className="font-sm text-sm underline px-8 py-3 flex items-center gap-2 rounded-full mx-auto w-full justify-center hover:bg-gray-50 transition-colors">
+                <CiShare2 />
+                Share this listing
+              </button>
+
+              {/* Dropdown/Popup */}
+              <div className="absolute hidden group-hover:block top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white shadow-lg rounded-lg p-2 z-50">
+                <div className="flex flex-col gap-2">
+                  <Link to="https://www.facebook.com">
+                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
+                      <FaFacebook className="text-blue-600 text-lg" />
+                      <span className="text-sm">Facebook</span>
+                    </button>
+                  </Link>
+                  <Link to="https://www.x.com">
+                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
+                      <FaTwitter className="text-blue-400 text-lg" />
+                      <span className="text-sm">Twitter</span>
+                    </button>
+                  </Link>
+                  <Link to="https://www.gmail.com">
+                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
+                      <FaEnvelope className="text-gray-600 text-lg" />
+                      <span className="text-sm">Email</span>
+                    </button>
+                  </Link>
+                  <Link to="https://www.google.com">
+                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
+                      <FaLink className="text-gray-600 text-lg" />
+                      <span className="text-sm">Copy Link</span>
+                    </button>
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+          {/* List your home with us section */}
+                  <div className="flex flex-col items-center justify-center gap-5 bg-red-100 rounded-md p-5 mt-16 shadow-md">
+
+                    <h3 className="text-md font-semibold">List your home with us</h3>
+                    <p className="texts-sm font-light ">Get an approximate valuation in a matter of minutes</p>
+                  <button className="px-10 hover:bg-red-300 hover:text-white hover:border-none cursor-pointer rounded-full  py-2 border">Book a Valuation</button>
+                  </div>
+          </div>
+          <div className="h-screen"></div>
+        </div>
+      </div>
     </div>
-    <div className="h-screen">
-
-</div>
-  </div>
-</div>
-
-</div>
- 
   );
 };
 
