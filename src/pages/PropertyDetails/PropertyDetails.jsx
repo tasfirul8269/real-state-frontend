@@ -20,6 +20,7 @@ import { MdDone } from "react-icons/md";
 import SimpleMap from "../../components/SimpleMap/SimpleMap";
 import { RiInformationLine } from "react-icons/ri";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const PropertyDetails = () => {
   const [propertyDetails, setPropertyDetails] = useState(null);
@@ -65,7 +66,7 @@ const PropertyDetails = () => {
 
   return (
     <div className="flex flex-col items-center">
-      // Image container
+      {/* Image container */}
       <div className="max-w-5xl mx-auto h-[500px] pt-32 relative">
         <div className="grid grid-cols-1 md:grid-cols-2 h-full gap-1">
           {/* Main Image Column */}
@@ -102,20 +103,21 @@ const PropertyDetails = () => {
           className="absolute left-0 z-10 p-4 flex gap-2"
           style={{ top: "calc(100% + 2rem)" }}
         >
-          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
+          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2 cursor-pointer">
             <IoMdPhotos className="text-lg" />
             Photos {propertyDetails.galleryImages.length}
           </button>
-          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
+          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2 cursor-pointer">
             <LuMapPin className="text-lg" />
             Map
           </button>
-          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2">
+          <button className="btn bg-white/90 text-gray-800 btn-sm px-4 py-2 rounded-xl shadow-md flex items-center gap-2 cursor-pointer">
             <IoBookOutline className="text-lg" />
             Brochure
           </button>
         </div>
       </div>
+
       {/* Property details container */}
       <div className=" w-full container mx-auto mt-44 flex items-center justify-center">
         {/* Left content (60%) */}
@@ -201,7 +203,7 @@ const PropertyDetails = () => {
               <h3 className="text-md font-bold flex items-center gap-2">
                 DLD Permit Information{" "}
                 <button
-                  className="tooltip tooltip-right	"
+                  className="tooltip tooltip-right cursor-pointer"
                   data-tip="The Dubai Land Department strongly advises all customers and investors to only engage with real estate advertisements that feature the QR Code"
                 >
                   <RiInformationLine className="cursor-pointer" />
@@ -210,105 +212,163 @@ const PropertyDetails = () => {
               <p className="text-sm font-medium grid grid-cols-2 gap-2">
                 {propertyDetails.dldPermitInfo.permitNumber}
               </p>
-              <p className="text-sm font-light text-gray-600">This property listing has been reviewed and verified by Dubai Land Department</p>
+              <p className="text-sm font-light text-gray-600">
+                This property listing has been reviewed and verified by Dubai
+                Land Department
+              </p>
             </div>
           </div>
         </div>
 
         {/* Right sticky sidebar (40%) */}
         <div className=" p-10 flex-[1.3] sticky top-0 self-start h-fit">
-          {/* Your sticky content here */}
           <div className="sticky top-4">
-            {/* Inner content that stays sticky */}
+            <div className="border border-0.5 border-gray-200 p-10 shadow-md">
+              <div className="flex items-center gap-4">
+                <img
+                  className="w-20 h-20 rounded-md"
+                  src="https://ggfx-handh3.s3.eu-west-2.amazonaws.com/x/170ct200/Musa_Sanusi_hausandhaus_2023_ES_5bc1e962b3.webp"
+                  alt="Agent Image"
+                />
 
-          <div className="border border-0.5 border-gray-200 p-10 shadow-md">
-
-          <div className="flex items-center gap-4">
-              <img
-                className="w-20 h-20 rounded-md"
-                src="https://ggfx-handh3.s3.eu-west-2.amazonaws.com/x/170ct200/Musa_Sanusi_hausandhaus_2023_ES_5bc1e962b3.webp"
-                alt="Agent Image"
-              />
-
-              <div className="space-y-2">
-                <h3 className="text-md font-bold">
-                  {propertyDetails.agent.name}
-                </h3>
-                <p className="text-sm text-gray-500">
-                  {propertyDetails.agent.role}
-                </p>
-                <p className="text-sm font-semibold text-gray-500 flex items-center gap-2">
-                  Speaks:
-                  {propertyDetails.agent.languages.map((lang, index) => (
-                    <span className="font-medium" key={index}>
-                      {lang},
-                    </span>
-                  ))}
-                </p>
+                <div className="space-y-2">
+                  <h3 className="text-md font-bold">
+                    {propertyDetails.agent.name}
+                  </h3>
+                  <p className="text-sm text-gray-500">
+                    {propertyDetails.agent.role}
+                  </p>
+                  <p className="text-sm font-semibold text-gray-500 flex items-center gap-2">
+                    Speaks:
+                    {propertyDetails.agent.languages.map((lang, index) => (
+                      <span className="font-medium" key={index}>
+                        {lang},
+                      </span>
+                    ))}
+                  </p>
+                </div>
               </div>
-            </div>
-            {/* agent section buttons  */}
-            <div className="flex items-center gap-5 my-10 text-center">
-              <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full">
-                <IoCallOutline />
-                Call
-              </button>
-              <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full">
-                <FaWhatsapp />
-                Whatsapp
-              </button>
-            </div>
-            <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full mx-auto w-full justify-center">
-              <FaRegCalendarAlt />
-              Book a viewing
-            </button>
 
-            <div className="relative group">
-              <button className="font-sm text-sm underline px-8 py-3 flex items-center gap-2 rounded-full mx-auto w-full justify-center hover:bg-gray-50 transition-colors">
-                <CiShare2 />
-                Share this listing
+              {/* agent section buttons */}
+              <div className="flex items-center gap-5 my-10 text-center">
+                <a
+                  href="tel:+1234567890"
+                  className="bg-red-500 font-medium text-md px-8 py-3 text-white flex items-center gap-2 rounded-full hover:bg-red-600 transition-colors cursor-pointer"
+                >
+                  <IoCallOutline />
+                  Call
+                </a>
+                <a
+                  href="https://wa.me/1234567890"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-red-500 font-medium text-md px-8 py-3 text-white flex items-center gap-2 rounded-full hover:bg-red-600 transition-colors cursor-pointer"
+                >
+                  <FaWhatsapp />
+                  Whatsapp
+                </a>
+              </div>
+
+              <button
+                onClick={() => {
+                  Swal.fire({
+                    title: "Book a Viewing",
+                    html: `
+                      <form class="space-y-4">
+                        <div class="flex gap-4">
+                          <input type="text" id="firstName" placeholder="First Name *" class="w-full p-2 border rounded" required>
+                          <input type="text" id="lastName" placeholder="Last Name *" class="w-full p-2 border rounded" required>
+                        </div>
+                        <input type="email" id="email" placeholder="Email Address *" class="w-full p-2 border rounded" required>
+                        <div class="flex items-center gap-2">
+                          <span class="p-2 bg-gray-100 border rounded">+971</span>
+                          <input type="tel" id="phone" placeholder="Phone Number *" class="w-full p-2 border rounded" required>
+                        </div>
+                        <div class="flex gap-4">
+                          <div class="w-full">
+                            <input type="date" id="date" class="w-full p-2 border rounded" required>
+                          </div>
+                          <div class="w-full">
+                            <input type="time" id="time" class="w-full p-2 border rounded" required>
+                          </div>
+                        </div>
+                        <textarea id="message" placeholder="Message" class="w-full p-2 border rounded" rows="4"></textarea>
+                        <button type="submit" class="w-full bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 cursor-pointer">
+                          Send Enquiry
+                        </button>
+                        <p class="text-sm text-gray-500">
+                          By clicking Submit, you agree to our 
+                          <a href="/terms" class="text-red-500">Terms and Conditions</a> and 
+                          <a href="/privacy" class="text-red-500">Privacy Policy</a>.
+                        </p>
+                      </form>
+                    `,
+                    confirmButtonText: "Send Enquiry",
+                    showCancelButton: true,
+                    focusConfirm: false,
+                    customClass: {
+                      popup: "rounded-lg",
+                      confirmButton:
+                        "bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-2 rounded-full cursor-pointer",
+                      cancelButton:
+                        "bg-gray-100 hover:bg-gray-200 text-gray-800 font-medium px-6 py-2 rounded-full cursor-pointer",
+                    },
+                  });
+                }}
+                className="bg-red-500 font-medium text-md px-8 py-3 text-white flex items-center gap-2 rounded-full mx-auto w-full justify-center cursor-pointer"
+              >
+                <FaRegCalendarAlt />
+                Book a viewing
               </button>
 
-              {/* Dropdown/Popup */}
-              <div className="absolute hidden group-hover:block top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white shadow-lg rounded-lg p-2 z-50">
-                <div className="flex flex-col gap-2">
-                  <Link to="https://www.facebook.com">
-                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
-                      <FaFacebook className="text-blue-600 text-lg" />
-                      <span className="text-sm">Facebook</span>
-                    </button>
-                  </Link>
-                  <Link to="https://www.x.com">
-                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
-                      <FaTwitter className="text-blue-400 text-lg" />
-                      <span className="text-sm">Twitter</span>
-                    </button>
-                  </Link>
-                  <Link to="https://www.gmail.com">
-                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
-                      <FaEnvelope className="text-gray-600 text-lg" />
-                      <span className="text-sm">Email</span>
-                    </button>
-                  </Link>
-                  <Link to="https://www.google.com">
-                    <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md">
-                      <FaLink className="text-gray-600 text-lg" />
-                      <span className="text-sm">Copy Link</span>
-                    </button>
-                  </Link>
+              <div className="relative group">
+                <button className="font-sm text-sm underline px-8 py-3 flex items-center gap-2 rounded-full mx-auto w-full justify-center hover:bg-gray-50 transition-colors cursor-pointer">
+                  <CiShare2 />
+                  Share this listing
+                </button>
+
+                {/* Dropdown/Popup */}
+                <div className="absolute hidden group-hover:block top-full left-1/2 -translate-x-1/2 mt-2 w-48 bg-white shadow-lg rounded-lg p-2 z-50">
+                  <div className="flex flex-col gap-2">
+                    <Link to="https://www.facebook.com">
+                      <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer">
+                        <FaFacebook className="text-blue-600 text-lg" />
+                        <span className="text-sm">Facebook</span>
+                      </button>
+                    </Link>
+                    <Link to="https://www.x.com">
+                      <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer">
+                        <FaTwitter className="text-blue-400 text-lg" />
+                        <span className="text-sm">Twitter</span>
+                      </button>
+                    </Link>
+                    <Link to="https://www.gmail.com">
+                      <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer">
+                        <FaEnvelope className="text-gray-600 text-lg" />
+                        <span className="text-sm">Email</span>
+                      </button>
+                    </Link>
+                    <Link to="https://www.google.com">
+                      <button className="flex items-center gap-2 p-2 hover:bg-gray-100 rounded-md cursor-pointer">
+                        <FaLink className="text-gray-600 text-lg" />
+                        <span className="text-sm">Copy Link</span>
+                      </button>
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>
 
-
-          </div>
-          {/* List your home with us section */}
-                  <div className="flex flex-col items-center justify-center gap-5 bg-red-100 rounded-md p-5 mt-16 shadow-md">
-
-                    <h3 className="text-md font-semibold">List your home with us</h3>
-                    <p className="texts-sm font-light ">Get an approximate valuation in a matter of minutes</p>
-                  <button className="px-10 hover:bg-red-300 hover:text-white hover:border-none cursor-pointer rounded-full  py-2 border">Book a Valuation</button>
-                  </div>
+            {/* List your home with us section */}
+            <div className="flex flex-col items-center justify-center gap-5 bg-red-100 rounded-md p-5 mt-16 shadow-md">
+              <h3 className="text-md font-semibold">List your home with us</h3>
+              <p className="texts-sm font-light ">
+                Get an approximate valuation in a matter of minutes
+              </p>
+              <button className="px-10 hover:bg-red-300 hover:text-white hover:border-none cursor-pointer rounded-full py-2 border">
+                Book a Valuation
+              </button>
+            </div>
           </div>
           <div className="h-screen"></div>
         </div>
