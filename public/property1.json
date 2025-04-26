@@ -50,5 +50,9 @@
     "role": "Luxury Property Specialist",
     "languages": ["English", "Arabic", "Russian"],
     "phone": "+971501234567"
+  },
+  "dldPermitInfo": {
+    "permitNumber": "DLD-PERMIT-123456",
+    "permitQrCode": "https://ggfx-handh3.s3.eu-west-2.amazonaws.com/i/qr_code/JPJ250558_71662574903_109717.png"
   }
 }

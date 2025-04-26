@@ -10,6 +10,7 @@ import { LiaBathSolid } from "react-icons/lia";
 import {  LuMapPin } from "react-icons/lu";
 import { MdDone } from "react-icons/md";
 import SimpleMap from "../../components/SimpleMap/SimpleMap";
+import { RiInformationLine } from "react-icons/ri";
 
 const PropertyDetails = () => {
   const [propertyDetails, setPropertyDetails] = useState(null);
@@ -105,9 +106,9 @@ const PropertyDetails = () => {
 </div>
 
 {/* Property details container */}
-<div className="border w-full container mx-auto mt-44 flex items-center justify-center">
+<div className=" w-full container mx-auto mt-44 flex items-center justify-center">
   {/* Left content (60%) */}
-  <div className="border p-10 space-y-4 flex-[3]">
+  <div className=" p-10 space-y-4 flex-[3]">
     <h3 className="text-2xl font-bold">{propertyDetails.price}</h3>
       <p className="text-sm font-semibold text-gray-600">{propertyDetails.title}</p>
 
@@ -151,6 +152,18 @@ const PropertyDetails = () => {
           <p className="text-sm flex items-center gap-2 my-3 font-medium "><CiLocationOn /> {" "}{propertyDetails.location.address}</p>
         </div>
         <SimpleMap coordinates={propertyDetails.location.coordinates}></SimpleMap>
+        {/* divider */}
+           <div className="border border-0.5 border-gray-100 my-10"></div>
+           {/* Dld permit information */}
+          <div className="flex items-center gap-4">
+          <img src={propertyDetails.dldPermitInfo.permitQrCode} className="w-16"  />
+           <div>
+            <h3 className="text-md font-bold flex items-center gap-2">DLD Permit Information {" "} <button className="tooltip tooltip-right	"  data-tip="The Dubai Land Department strongly advises all customers and investors to only engage with real estate advertisements that feature the QR Code">
+            <RiInformationLine className="cursor-pointer"  /></button></h3>
+            <p className="text-sm font-medium grid grid-cols-2 gap-2">{propertyDetails.dldPermitInfo.permitNumber}</p>
+           </div>
+          </div>
+
   </div>
 
   {/* Right sticky sidebar (40%) */}
