@@ -2,10 +2,10 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { AiOutlineFullscreen } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
-import { FaRegQuestionCircle } from "react-icons/fa";
+import { FaRegCalendarAlt, FaRegQuestionCircle, FaWhatsapp } from "react-icons/fa";
 import { GoDotFill } from "react-icons/go";
 import { IoMdPhotos } from "react-icons/io";
-import { IoBedOutline, IoBookOutline } from "react-icons/io5";
+import { IoBedOutline, IoBookOutline, IoCallOutline } from "react-icons/io5";
 import { LiaBathSolid } from "react-icons/lia";
 import {  LuMapPin } from "react-icons/lu";
 import { MdDone } from "react-icons/md";
@@ -171,7 +171,28 @@ const PropertyDetails = () => {
     {/* Your sticky content here */}
     <div className="sticky top-4">
       {/* Inner content that stays sticky */}
-      This content will stick when scrolling
+
+
+     <div className="flex items-center gap-4">
+     <img className="w-20 h-20 rounded-md" src="https://ggfx-handh3.s3.eu-west-2.amazonaws.com/x/170ct200/Musa_Sanusi_hausandhaus_2023_ES_5bc1e962b3.webp" alt="Agent Image" />
+      
+      <div className="space-y-2">
+      <h3 className="text-md font-bold">{propertyDetails.agent.name}</h3>
+       <p className="text-sm text-gray-500">{propertyDetails.agent.role}</p>
+       <p className="text-sm font-semibold text-gray-500 flex items-center gap-2">
+         Speaks: 
+         {
+           propertyDetails.agent.languages.map((lang, index) => <span className="font-medium" key={index}>{lang},</span>)
+         }
+       </p>
+      </div>
+     </div>
+     {/* agent section buttons  */}
+     <div className="flex items-center gap-5 my-10 text-center">
+         <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full"><IoCallOutline />Call</button>
+         <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full"><FaWhatsapp />Whatsapp</button>
+     </div>
+         <button className="bg-red-500 font-medium text-xl px-8 py-3 text-white flex items-center gap-2 rounded-full mx-auto w-full justify-center"><FaRegCalendarAlt  />Book a viewing</button>
     </div>
     <div className="h-screen">
 
