@@ -7,8 +7,19 @@ import {
   FaBuilding,
 } from "react-icons/fa";
 import "animate.css";
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { IoBedOutline } from "react-icons/io5";
+import { PiBathtubThin } from "react-icons/pi";
+import { GiKitchenScale } from "react-icons/gi";
+import bath from "../../assets/ic_bath.svg"
+import bed from "../../assets/ic_bed.svg";
+import kitchen from "../../assets/ic_kitchen.svg"
+
+
 
 const OffPlanProperties = () => {
+
+  
   const properties = [
     {
       name: "The Acres",
@@ -16,17 +27,31 @@ const OffPlanProperties = () => {
       deliveryDate: "Dec. 2028",
       price: "AED 5,090,000",
       developer: "MERAAS",
-      image:
-        "https://i.ibb.co.com/tMyVpjdk/the-acres-hausandhaus-main-1-50fe8d0045.webp",
+      image: "https://i.ibb.co.com/tMyVpjdk/the-acres-hausandhaus-main-1-50fe8d0045.webp",
+      propertyType: "Villa",
+      beds: 5,
+      baths: 4,
+      kitchens: 1,
+      languages: ["English", "Arabic"],
+      bgColor: "#f0f7f4",
+      agentName: "Sarah Johnson",
+      agentImage: "https://randomuser.me/api/portraits/women/1.jpg"
     },
     {
-      name: "Serenia District",
+      name: "Serenia District Apartment",
       location: "Jumariah Islands",
       deliveryDate: "Dec. 2028",
       price: "AED 1,860,000",
       developer: "Palma Holding",
-      image:
-        "https://i.ibb.co.com/39dHgZNQ/serenia-district-jumeirah-islands-hausandhaus-101-c6273717cc.webp",
+      image: "https://i.ibb.co.com/39dHgZNQ/serenia-district-jumeirah-islands-hausandhaus-101-c6273717cc.webp",
+      propertyType: "Apartment",
+      beds: 2,
+      baths: 2,
+      kitchens: 1,
+      languages: ["English", "Arabic", "Russian"],
+      bgColor: "#fff5e6",
+      agentName: "Ahmed Al-Maktoum",
+      agentImage: "https://randomuser.me/api/portraits/men/4.jpg"
     },
     {
       name: "Palmiera The Oasis",
@@ -34,8 +59,15 @@ const OffPlanProperties = () => {
       deliveryDate: "Dec. 2027",
       price: "AED 8,500,000",
       developer: "EMAAR",
-      image:
-        "https://i.ibb.co.com/0pRGvhSp/OASIS-PALMIERA-x-hausandhaus-1-e125317ee0.webp",
+      image: "https://i.ibb.co.com/0pRGvhSp/OASIS-PALMIERA-x-hausandhaus-1-e125317ee0.webp",
+      propertyType: "Mansion",
+      beds: 7,
+      baths: 6,
+      kitchens: 2,
+      languages: ["English", "Arabic", "French"],
+      bgColor: "#f9f2e8",
+      agentName: "Fatima Al-Farsi",
+      agentImage: "https://randomuser.me/api/portraits/women/2.jpg"
     },
     {
       name: "Orise by Beyond",
@@ -43,9 +75,16 @@ const OffPlanProperties = () => {
       deliveryDate: "Mar. 2028",
       price: "AED 1,900,000",
       developer: "OIMINAT",
-      image:
-        "https://i.ibb.co.com/TB1DYX9h/orise-by-beyond-omniyat-hausandhaus-11-954e43c5d0.webp",
-    },
+      image: "https://i.ibb.co.com/TB1DYX9h/orise-by-beyond-omniyat-hausandhaus-11-954e43c5d0.webp",
+      propertyType: "Apartment",
+      beds: 1,
+      baths: 1,
+      kitchens: 1,
+      languages: ["English", "Arabic", "Chinese"],
+      bgColor: "#e6f3ff",
+      agentName: "Li Wei",
+      agentImage: "https://randomuser.me/api/portraits/men/5.jpg"
+    }
   ];
 
   return (
@@ -66,58 +105,72 @@ const OffPlanProperties = () => {
             return (
               <div key={chunkIndex} className="space-y-8">
                 {/* Property grid for this chunk */}
-                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 px-8">
                   {chunk.map((property, index) => (
                     <div
                       key={startIndex + index}
-                      className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp`}
+                      className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp w-full`}
                     >
                       {/* Property Image */}
-                      <div className="h-48 overflow-hidden">
+                      <div className="h-48 overflow-hidden rounded-lg">
                         <img
                           src={property.image}
                           alt={property.name}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                          className="w-full rounded-lg h-full object-cover transition-transform duration-500 hover:scale-105 p-1"
                         />
                       </div>
 
                       {/* Property Details */}
                       <div className="p-6 border border-gray-300">
-                        <h2 className="text-xl font-semibold text-gray-800 mb-2">
-                          {property.name}
-                        </h2>
-                        <p className="text-gray-600 mb-4 flex items-center">
-                          <FaMapMarkerAlt className="mr-2" />{" "}
+                        {/* Property Name */} 
+                       <div className="flex items-center justify-between">
+                       <h2 className="text-xl font-semibold text-gray-800 mb-2">
+  {property.name.length > 20 ? `${property.name.substring(0, 20)}...` : property.name}
+</h2>
+                        <button className={`bg-${property.bgColor} btn btn-outline border-amber-600 text-amber-600 px-4 py-2`}>{property.propertyType}</button>
+                       </div>
+                        <p className="text-gray-600 mb-4 text-sm flex items-center">
+                          <FaLocationCrosshairs className="mr-2 text-blue-500" />{" "}
                           {property.location}
                         </p>
 
-                        <div className="space-y-3 my-4">
-                          <p className="text-gray-700 text-xs flex items-center">
-                            <FaCalendarAlt className="mr-2" />
-                            <span className="font-bold">Delivery: </span>{" "}
-                            {property.deliveryDate}
-                          </p>
-                          <p className="text-gray-700 text-xs flex items-center">
-                            <FaMoneyBillWave className="mr-2" />
-                            <span className="font-bold">Price from: </span>{" "}
-                            {property.price}
-                          </p>
-                          <p className="text-gray-700 text-xs flex items-center">
-                            <FaBuilding className="mr-2" />
-                            <span className="font-bold">Developer: </span>{" "}
-                            {property.developer}
-                          </p>
+                     <div className="flex justify-between items-center gap-2 ">
+                     <div className="text-gray-500 flex items-center mb-4 ">
+                          <img src={bed} alt="Bed" className="mr-2" />
+                          <p>{property.beds}</p>
                         </div>
+                        <div className="text-gray-500 flex items-center mb-4">
+                          <img src={bath} alt="Bathroom" className="mr-2" />
+                          <p>{property.baths}</p>
+                        </div>
+                        <div className="text-gray-500 flex items-center mb-4">
+                        <img src={kitchen} alt="Kitchen" className="mr-2" />
+                          <p>{property.baths}</p>
+                        </div>
+                     </div>
+
+                      <div className="flex items-center gap-4">
+                        <img src={property.image} alt={property.name} className="rounded-full w-14 h-14 my-2" />
+                        <div>
+    <p className="text-xs text-gray-500">{property.languages.map((lang, index) => <span>{lang}{index < property.languages.length - 1 ? ', ' : ''}</span>)}</p>
+    <h2 className="text-sm font-semibold text-gray-800 mb-2">
+    {property.agentName.length > 15 ? `${property.name.substring(0, 15)}...` : property.agentName}</h2>
+  </div>
+                    <p className="text-lg font-semibold">{property.price}</p>
+                      </div>
 
                         <div className="border font-extralight border-gray-200"></div>
 
                         {/* Action Buttons */}
                         <div className="flex space-x-4 justify-between mt-6 pb-5">
-                          <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:text-white hover:bg-red-300 border-none transition flex-1">
-                            <FaPhone className="mr-2" /> Call
+                          <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-[#E6E6E6] text-[#8D8D8D] hover:text-white hover:bg-gray-700 border-none transition flex-1">
+                            <FaPhone className="mr-2 text-md" /> Call
                           </button>
-                          <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-gray-200 hover:text-white hover:bg-red-300 border-none transition flex-1">
-                            <FaWhatsapp className="text-2xl" /> Whatsapp
+                          <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-[#E5FFF1] text-[#00BD6E] hover:text-white hover:bg-green-700 border-none transition flex-1">
+                            <FaWhatsapp className="text-xl" /> Whatsapp
+                          </button>
+                          <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-[#EBF8FF] text-[#256FFF] hover:text-white hover:bg-blue-700 border-none transition flex-1">
+                            Booking
                           </button>
                         </div>
                       </div>
@@ -127,7 +180,7 @@ const OffPlanProperties = () => {
 
                 {/* Insert ad after each chunk except the last one if it's not complete */}
                 {chunkIndex < Math.ceil(properties.length / 3) - 1 && (
-                  <div className="w-full p-6 bg-gray-100 rounded-lg text-center">
+                  <div className="w-full p-6 bg-gray-100 rounded-lg text-center ">
                     <h3 className="text-xl font-bold mb-2">Special Offer!</h3>
                     <p className="mb-4">
                       Check out our exclusive deals for premium properties

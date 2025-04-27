@@ -67,10 +67,16 @@ const Navbar = () => {
     { id: 2, name: "Commercial Properties For Rent", link: "rent" },
   ];
 
+  // Helper function to determine text color
+  const getTextColor = () => {
+    if (isHomePage && !scrolled) return "text-white";
+    return "text-black";
+  };
+
   return (
     // Main navigation container with dynamic classes based on scroll state and route
     <nav
-      className={`fixed w-full  z-50 transition-all duration-300 ${
+      className={`fixed w-full z-50 transition-all duration-300 ${
         isHomePage
           ? scrolled
             ? "bg-white shadow-md py-2"
@@ -91,10 +97,10 @@ const Navbar = () => {
             <div className="flex justify-center items-center">
               <img className="w-24" src={logo} alt="LOGO" />
               <div>
-                <h3 className="text-2xl font-bold tracking-tight text-black">
+                <h3 className={`text-2xl font-bold tracking-tight ${getTextColor()}`}>
                   MATELUXY
                 </h3>
-                <p className="text-lg uppercase tracking-widest text-black">
+                <p className={`text-lg uppercase tracking-widest ${getTextColor()}`}>
                   REAL ESTATE
                 </p>
               </div>
@@ -107,9 +113,7 @@ const Navbar = () => {
               {/* Buy link */}
               <Link
                 to="/buy"
-                className={`${
-                  isHomePage && !scrolled ? "text-black" : "text-black"
-                } hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm `}
+                className={`${getTextColor()} hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm`}
               >
                 Buy
               </Link>
@@ -117,9 +121,7 @@ const Navbar = () => {
               {/* Rent link */}
               <Link
                 to="/rent"
-                className={`${
-                  isHomePage && !scrolled ? "text-black" : "text-black"
-                } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 font-semibold text-sm `}
+                className={`${getTextColor()} hover:border-[#00BFFF] hover:border-b hover:pb-1.5 font-semibold text-sm`}
               >
                 Rent
               </Link>
@@ -127,9 +129,7 @@ const Navbar = () => {
               {/* Off Plan dropdown section */}
               <div className="relative group uppercase">
                 <button
-                  className={`flex items-center cursor-pointer ${
-                    isHomePage && !scrolled ? "text-black" : "text-black"
-                  } hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm`}
+                  className={`flex items-center cursor-pointer ${getTextColor()} hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm`}
                 >
                   Off Plan{" "}
                   <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
@@ -157,12 +157,10 @@ const Navbar = () => {
               {/* Commercial dropdown section */}
               <div className="relative group uppercase cursor-pointer">
                 <button
-                  className={`flex items-center cursor-pointer ${
-                    isHomePage && !scrolled ? "text-black" : "text-black"
-                  } hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm`}
+                  className={`flex items-center cursor-pointer ${getTextColor()} hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm`}
                 >
                   Commercial{" "}
-                  <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180 " />
+                  <IoIosArrowDown className="ml-1 transition-transform group-hover:rotate-180" />
                 </button>
 
                 {/* Commercial dropdown content - shown on hover */}
@@ -187,9 +185,7 @@ const Navbar = () => {
               {/* Contact link */}
               <Link
                 to="/contact"
-                className={`${
-                  isHomePage && !scrolled ? "text-black" : "text-black"
-                } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm font-semibold`}
+                className={`${getTextColor()} hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm font-semibold`}
               >
                 Contact
               </Link>
@@ -198,19 +194,15 @@ const Navbar = () => {
 
           {/* WhatsApp contact section */}
           <div
-            className={`flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-0.8s rounded-full  border-2 ${
+            className={`flex items-center space-x-4 animate__animated animate__fadeIn animate__delay-0.8s rounded-full border-2 ${
               isHomePage && !scrolled ? "border-green-300" : "border-green-300"
-            } hover:bg-white bg-[#CEFFD5] text-green-400 `}
+            } hover:bg-white bg-[#CEFFD5] text-green-400`}
           >
             <Link
               to="https://wa.me/+1234567890"
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex justify-center items-center gap-1.5 ${
-                isHomePage && !scrolled
-                  ? "text-black hover:text-[#083819]"
-                  : "text-black hover:text-white"
-              } px-5 py-3`}
+              className="flex justify-center items-center gap-1.5 px-5 py-3"
             >
               <FaWhatsapp className="text-xl text-[#00BD1C]" />{" "}
               <span className="text-[#00BD1C]">Whatsapp</span>
@@ -225,10 +217,10 @@ const Navbar = () => {
             <div className="flex justify-center items-center">
               <img className="w-20" src={logo} alt="LOGO" />
               <div>
-                <h3 className="text-xl font-bold tracking-tight text-white">
+                <h3 className={`text-xl font-bold tracking-tight ${getTextColor()}`}>
                   MATELUXY
                 </h3>
-                <p className="text-sm uppercase tracking-widest text-white">
+                <p className={`text-sm uppercase tracking-widest ${getTextColor()}`}>
                   REAL ESTATE
                 </p>
               </div>
@@ -242,7 +234,7 @@ const Navbar = () => {
               to="https://wa.me/+8801640301028"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-green-500 hover:text-green-600"
+              className={`${isHomePage && !scrolled ? "text-white" : "text-green-500"} hover:text-green-600`}
             >
               <FaWhatsapp className="text-xl" />
             </Link>
@@ -250,11 +242,7 @@ const Navbar = () => {
             {/* Mobile menu toggle button */}
             <button
               onClick={toggleMenu}
-              className={`${
-                isHomePage && !scrolled
-                  ? "text-white cursor-pointer"
-                  : "text-gray-200 cursor-pointer"
-              } focus:outline-none animate__animated animate__fadeIn animate__delay-1s`}
+              className={`${getTextColor()} focus:outline-none animate__animated animate__fadeIn animate__delay-1s`}
             >
               {isMenuOpen ? (
                 <FaTimes className="w-6 h-6" />

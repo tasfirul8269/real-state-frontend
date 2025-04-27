@@ -43,6 +43,17 @@ A modern real estate portal showcasing premium properties in Dubai, featuring Bu
 - Mock API Service (JSON data)
 - Axios HTTP Client
 
+**Color Codes**
+Blue Button
+BG -- EBF8FF
+Text -- 256FFF
+Green Button
+BG -- E5FFF1
+Text -- 00BD6E
+Gray Button
+BG -- E6E6E6
+Text -- 8D8D8D
+
 ## Installation
 
 1. Clone repository:
