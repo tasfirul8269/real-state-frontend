@@ -68,7 +68,7 @@ const OffPlanPropertiesPage = () => {
         </p>
 
         {/* cards container */}
-        <div className="border">
+        <div>
           <div className=" px-4 py-12 animate__animated animate__fadeIn">
             <h1 className="text-3xl font-bold text-[#083819] mb-6">
               Browse our Off Plan properties

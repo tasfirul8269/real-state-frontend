@@ -73,9 +73,9 @@ const Navbar = () => {
       className={`fixed w-full  z-50 transition-all duration-300 ${
         isHomePage
           ? scrolled
-            ? "bg-[#ff0000] shadow-md py-2"
+            ? "bg-white shadow-md py-2"
             : "bg-transparent py-4"
-          : "bg-[#ff0000] shadow-md py-2"
+          : "bg-white shadow-md py-2"
       } ${!isHomePage && !visible ? "-translate-y-full" : "translate-y-0"}`}
       style={{
         transition: isHomePage
@@ -91,10 +91,10 @@ const Navbar = () => {
             <div className="flex justify-center items-center">
               <img className="w-24" src={logo} alt="LOGO" />
               <div>
-                <h3 className="text-2xl font-bold tracking-tight text-white">
+                <h3 className="text-2xl font-bold tracking-tight text-black">
                   MATELUXY
                 </h3>
-                <p className="text-lg uppercase tracking-widest text-white">
+                <p className="text-lg uppercase tracking-widest text-black">
                   REAL ESTATE
                 </p>
               </div>
@@ -108,7 +108,7 @@ const Navbar = () => {
               <Link
                 to="/buy"
                 className={`${
-                  isHomePage && !scrolled ? "text-white" : "text-white"
+                  isHomePage && !scrolled ? "text-black" : "text-black"
                 } hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm `}
               >
                 Buy
@@ -118,7 +118,7 @@ const Navbar = () => {
               <Link
                 to="/rent"
                 className={`${
-                  isHomePage && !scrolled ? "text-white" : "text-white"
+                  isHomePage && !scrolled ? "text-black" : "text-black"
                 } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 font-semibold text-sm `}
               >
                 Rent
@@ -128,7 +128,7 @@ const Navbar = () => {
               <div className="relative group uppercase">
                 <button
                   className={`flex items-center cursor-pointer ${
-                    isHomePage && !scrolled ? "text-white" : "text-white"
+                    isHomePage && !scrolled ? "text-black" : "text-black"
                   } hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm`}
                 >
                   Off Plan{" "}
@@ -158,7 +158,7 @@ const Navbar = () => {
               <div className="relative group uppercase cursor-pointer">
                 <button
                   className={`flex items-center cursor-pointer ${
-                    isHomePage && !scrolled ? "text-white" : "text-white"
+                    isHomePage && !scrolled ? "text-black" : "text-black"
                   } hover:border-[#00BFFF] hover:border-b font-semibold hover:pb-1.5 text-sm`}
                 >
                   Commercial{" "}
@@ -188,7 +188,7 @@ const Navbar = () => {
               <Link
                 to="/contact"
                 className={`${
-                  isHomePage && !scrolled ? "text-white" : "text-white"
+                  isHomePage && !scrolled ? "text-black" : "text-black"
                 } hover:border-[#00BFFF] hover:border-b hover:pb-1.5 text-sm font-semibold`}
               >
                 Contact
@@ -208,8 +208,8 @@ const Navbar = () => {
               rel="noopener noreferrer"
               className={`flex justify-center items-center gap-1.5 ${
                 isHomePage && !scrolled
-                  ? "text-white hover:text-[#083819]"
-                  : "text-white hover:text-black"
+                  ? "text-black hover:text-[#083819]"
+                  : "text-black hover:text-white"
               } px-5 py-3`}
             >
               <FaWhatsapp className="text-xl text-[#00BD1C]" />{" "}
