@@ -262,246 +262,265 @@ const PropertySearchBar = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-6 bg-amber-50 rounded-lg shadow-lg animate__animated animate__fadeIn">
-      <Tabs 
-        selectedIndex={activeTab} 
-        onSelect={(index) => {
-          setActiveTab(index);
-          setSearchParams({
-            location: "",
-            propertyType: "",
-            minPrice: "",
-            maxPrice: "",
-            beds: "",
-            baths: ""
-          });
-        }}
-        className="w-full"
-      >
-        <div className="flex flex-col md:flex-row gap-4 items-center w-full">
-          <TabList className="flex flex-row space-x-2 bg-gray-100 p-2 rounded-lg h-[50px]">
-            <Tab
-              className={`px-4 py-2 text-sm font-medium rounded-md cursor-pointer transition-all duration-300 flex items-center ${
-                activeTab === 0
-                  ? "bg-red-600 text-white shadow-md"
-                  : "text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              <Link to="/buy">Buy</Link>
-            </Tab>
-            
-            <Tab
-              className={`px-4 py-2 text-sm font-medium rounded-md cursor-pointer transition-all duration-300 flex items-center h-full ${
-                activeTab === 1
-                  ? "bg-red-600 text-white shadow-md"
-                  : "text-gray-700 hover:bg-gray-200"
-              }`}
-            >
-              <Link to='/rent'>Rent</Link>
-            </Tab>
-          </TabList>
+    <div className="w-full mx-auto p-4 md:p-6 bg-amber-50 rounded-lg shadow-lg animate__animated animate__fadeIn">
+  <Tabs 
+    selectedIndex={activeTab} 
+    onSelect={(index) => {
+      setActiveTab(index);
+      setSearchParams({
+        location: "",
+        propertyType: "",
+        minPrice: "",
+        maxPrice: "",
+        beds: "",
+        baths: ""
+      });
+    }}
+    className="w-full"
+  >
+    <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch md:items-center w-full">
+      {/* Tabs Section */}
+      <TabList className="flex flex-row flex-wrap gap-2  p-1 md:p-2 rounded-lg min-h-[50px] w-full md:w-auto">
+        <Tab
+          className={`flex-grow md:flex-grow-0 px-3 md:px-4 py-2 text-sm font-medium rounded-md cursor-pointer transition-all duration-300 flex items-center justify-center ${
+            activeTab === 0
+              ? "bg-red-600 text-white shadow-md"
+              : "text-gray-700 hover:bg-gray-200"
+          }`}
+        >
+          <Link to="/buy" className="w-full text-center">Buy</Link>
+        </Tab>
+        
+        <Tab
+          className={`flex-grow md:flex-grow-0 px-3 md:px-4 py-2 text-sm font-medium rounded-md cursor-pointer transition-all duration-300 flex items-center justify-center ${
+            activeTab === 1
+              ? "bg-red-600 text-white shadow-md"
+              : "text-gray-700 hover:bg-gray-200"
+          }`}
+        >
+          <Link to='/rent' className="w-full text-center">Rent</Link>
+        </Tab>
+      </TabList>
 
-          <div className="w-full overflow-x-auto">
-            <TabPanel>
-              <div className="animate__animated animate__fadeIn">
-                <div className="flex items-center gap-4 w-full" style={{ minWidth: "900px" }}>
-                  <input
-                    type="text"
-                    name="location"
-                    placeholder="Location"
-                    value={searchParams.location}
+      {/* Search Filters Section */}
+      <div className="w-full overflow-x-auto pb-2">
+        {/* Buy Tab Panel */}
+        <TabPanel>
+          <div className="animate__animated animate__fadeIn">
+            <div className="flex flex-col md:flex-row items-stretch gap-2 md:gap-4 w-full">
+              {/* Location Input */}
+              <input
+                type="text"
+                name="location"
+                placeholder="Location"
+                value={searchParams.location}
+                onChange={handleInputChange}
+                className="p-2 md:p-3 border border-gray-300 rounded-lg focus:outline-none transition flex-1 text-sm font-medium w-full md:min-w-[180px]"
+              />
+
+              {/* Property Type Dropdown */}
+              <div className="relative flex-1 w-full md:min-w-[180px]">
+                <select
+                  name="propertyType"
+                  value={searchParams.propertyType}
+                  onChange={handleInputChange}
+                  className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center md:text-left appearance-none"
+                >
+                  <option value="">Property Type</option>
+                  {propertyTypes.map((type, index) => (
+                    <option key={index} value={type}>{type}</option>
+                  ))}
+                </select>
+                <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+              </div>
+
+              {/* Price Range Container */}
+              <div className="flex flex-col md:flex-row gap-2 md:gap-4 flex-2 w-full">
+                {/* Min Price */}
+                <div className="relative flex-2 w-full">
+                  <select
+                    name="minPrice"
+                    value={searchParams.minPrice}
                     onChange={handleInputChange}
-                    className="p-3 border border-gray-300 rounded-lg focus:outline-none transition flex-1 text-sm font-medium min-w-[150px]"
-                  />
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[150px]">
-                    <select
-                      name="propertyType"
-                      value={searchParams.propertyType}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Property Type</option>
-                      {propertyTypes.map((type, index) => (
-                        <option key={index} value={type} >{type}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[150px]">
-                    <select
-                      name="minPrice"
-                      value={searchParams.minPrice}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Min Price</option>
-                      {buyPriceRanges[0].values.map((price, index) => (
-                        <option key={index} value={price} >{price}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[150px]">
-                    <select
-                      name="maxPrice"
-                      value={searchParams.maxPrice}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Max Price</option>
-                      {buyPriceRanges[1].values.map((price, index) => (
-                        <option key={index} value={price} >{price}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[120px]">
-                    <select
-                      name="beds"
-                      value={searchParams.beds}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Beds</option>
-                      {bedOptions.map((bed, index) => (
-                        <option key={index} value={bed} >{bed}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[120px]">
-                    <select
-                      name="baths"
-                      value={searchParams.baths}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Baths</option>
-                      {bathOptions.map((bath, index) => (
-                        <option key={index} value={bath} >{bath}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
+                    className="w-full p-2 md:p-3 p2-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Min Price</option>
+                    {buyPriceRanges[0].values.map((price, index) => (
+                      <option key={index} value={price}>{price}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2  transform -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                {/* Max Price */}
+                <div className="relative flex-2 w-full">
+                  <select
+                    name="maxPrice"
+                    value={searchParams.maxPrice}
+                    onChange={handleInputChange}
+                    className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Max Price</option>
+                    {buyPriceRanges[1].values.map((price, index) => (
+                      <option key={index} value={price}>{price}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
-            </TabPanel>
 
-            <TabPanel>
-              <div className="animate__animated animate__fadeIn w-full">
-                <div className="flex items-center gap-4 w-full" style={{ minWidth: "900px" }}>
-                  <input
-                    type="text"
-                    name="location"
-                    placeholder="Location"
-                    value={searchParams.location}
+              {/* Bed/Bath Container */}
+              <div className="flex flex-col md:flex-row gap-2 md:gap-4 flex-2 w-full">
+                {/* Beds */}
+                <div className="relative flex-2 w-full">
+                  <select
+                    name="beds"
+                    value={searchParams.beds}
                     onChange={handleInputChange}
-                    className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition flex-1 text-sm font-medium min-w-[150px]"
-                  />
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[150px]">
-                    <select
-                      name="propertyType"
-                      value={searchParams.propertyType}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Property Type</option>
-                      {propertyTypes.map((type, index) => (
-                        <option key={index} value={type}>{type}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[150px]">
-                    <select
-                      name="minPrice"
-                      value={searchParams.minPrice}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Min Price</option>
-                      {rentPriceRanges[0].values.map((price, index) => (
-                        <option key={index} value={price} className="text-center">{price}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[150px]">
-                    <select
-                      name="maxPrice"
-                      value={searchParams.maxPrice}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Max Price</option>
-                      {rentPriceRanges[1].values.map((price, index) => (
-                        <option key={index} value={price}>{price}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[120px]">
-                    <select
-                      name="beds"
-                      value={searchParams.beds}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Beds</option>
-                      {bedOptions.map((bed, index) => (
-                        <option key={index} value={bed} >{bed}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
-                  
-                  {/* Centered select */}
-                  <div className="relative flex-1 min-w-[120px]">
-                    <select
-                      name="baths"
-                      value={searchParams.baths}
-                      onChange={handleInputChange}
-                      className="p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium w-full text-center appearance-none"
-                    >
-                      <option value="">Baths</option>
-                      {bathOptions.map((bath, index) => (
-                        <option key={index} value={bath}>{bath}</option>
-                      ))}
-                    </select>
-                    <MdOutlineKeyboardArrowDown className="absolute right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
-                  </div>
+                    className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Beds</option>
+                    {bedOptions.map((bed, index) => (
+                      <option key={index} value={bed}>{bed}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                {/* Baths */}
+                <div className="relative flex-2 w-full">
+                  <select
+                    name="baths"
+                    value={searchParams.baths}
+                    onChange={handleInputChange}
+                    className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Baths</option>
+                    {bathOptions.map((bath, index) => (
+                      <option key={index} value={bath}>{bath}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
                 </div>
               </div>
-            </TabPanel>
+            </div>
           </div>
+        </TabPanel>
 
-          <button 
-            onClick={handleSearch}
-            className="bg-red-600 text-white p-3 rounded-full hover:bg-red-700 transition min-w-[50px] h-[50px] flex items-center justify-center flex-shrink-0 cursor-pointer"
-          >
-            <CiSearch className="text-2xl" />
-          </button>
-        </div>
-      </Tabs>
+        {/* Rent Tab Panel */}
+        <TabPanel>
+          <div className="animate__animated animate__fadeIn w-full">
+            <div className="flex flex-col md:flex-row items-stretch gap-2 md:gap-4 w-full">
+              {/* Location Input */}
+              <input
+                type="text"
+                name="location"
+                placeholder="Location"
+                value={searchParams.location}
+                onChange={handleInputChange}
+                className="p-2 md:p-3 border border-gray-300 rounded-lg focus:outline-none transition flex-1 text-sm font-medium w-full md:min-w-[180px]"
+              />
+
+              {/* Property Type Dropdown */}
+              <div className="relative flex-1 w-full md:min-w-[180px]">
+                <select
+                  name="propertyType"
+                  value={searchParams.propertyType}
+                  onChange={handleInputChange}
+                  className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center md:text-left appearance-none"
+                >
+                  <option value="">Property Type</option>
+                  {propertyTypes.map((type, index) => (
+                    <option key={index} value={type}>{type}</option>
+                  ))}
+                </select>
+                <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+              </div>
+
+              {/* Price Range Container */}
+              <div className="flex flex-col md:flex-row gap-2 md:gap-4 flex-1 w-full">
+                {/* Min Price */}
+                <div className="relative flex-1 w-full">
+                  <select
+                    name="minPrice"
+                    value={searchParams.minPrice}
+                    onChange={handleInputChange}
+                    className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Min Price</option>
+                    {rentPriceRanges[0].values.map((price, index) => (
+                      <option key={index} value={price}>{price}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                {/* Max Price */}
+                <div className="relative flex-1 w-full">
+                  <select
+                    name="maxPrice"
+                    value={searchParams.maxPrice}
+                    onChange={handleInputChange}
+                    className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Max Price</option>
+                    {rentPriceRanges[1].values.map((price, index) => (
+                      <option key={index} value={price}>{price}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                </div>
+              </div>
+
+              {/* Bed/Bath Container */}
+              <div className="flex flex-col md:flex-row gap-2 md:gap-4 flex-1 w-full">
+                {/* Beds */}
+                <div className="relative flex-1 w-full">
+                  <select
+                    name="beds"
+                    value={searchParams.beds}
+                    onChange={handleInputChange}
+                    className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Beds</option>
+                    {bedOptions.map((bed, index) => (
+                      <option key={index} value={bed}>{bed}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                </div>
+
+                {/* Baths */}
+                <div className="relative flex-1 w-full">
+                  <select
+                    name="baths"
+                    value={searchParams.baths}
+                    onChange={handleInputChange}
+                    className="w-full p-2 md:p-3 border border-gray-300 rounded-lg cursor-pointer focus:outline-none transition text-sm font-medium text-center appearance-none"
+                  >
+                    <option value="">Baths</option>
+                    {bathOptions.map((bath, index) => (
+                      <option key={index} value={bath}>{bath}</option>
+                    ))}
+                  </select>
+                  <MdOutlineKeyboardArrowDown className="absolute right-2 md:right-3 top-1/2 transform -translate-y-1/2 pointer-events-none" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </TabPanel>
+      </div>
+
+      {/* Search Button */}
+      <button 
+        onClick={handleSearch}
+        className="bg-red-600 text-white p-2 md:p-3 rounded-full hover:bg-red-700 transition min-w-[50px] h-[50px] flex items-center justify-center flex-shrink-0 cursor-pointer self-center md:self-auto"
+      >
+        <CiSearch className="text-xl md:text-2xl" />
+      </button>
     </div>
+  </Tabs>
+</div>
   );
 };
 

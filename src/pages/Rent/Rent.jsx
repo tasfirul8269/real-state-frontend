@@ -28,44 +28,57 @@ const Rent = () => {
 
   return (
     <div>
-      <div className="pt-36">
-        <PropertySearchBar></PropertySearchBar>
-        <CommunitySlider></CommunitySlider>
-        <div className="flex justify-between items-center container mx-auto">
-        <div>
-          <h3 className="text-4x text-green-900 font-bold pl-[5%]">
-            Properties for rent in Dubai
-          </h3>
+      <div className="pt-24 md:pt-36 px-4 md:px-0">
+        <PropertySearchBar />
+        <CommunitySlider />
 
-          <p className="pl-[5%] text-gray-500 font-light">
-            Results: {properties.length}
-          </p>
-        </div>
-        {/* filter buttons */}
-        <div className="flex items-center space-x-4">
-          {/* Most Recent Filter Button */}
+        {/* Header and Filters */}
+        <div className="container mx-auto">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center space-y-4 md:space-y-0 mb-6 md:mb-8">
+            <div className="w-full md:w-auto">
+              <h3 className="text-xl  text-green-900 font-bold text-center md:text-left px-4 md:pl-[5%]">
+                Properties for rent in Dubai
+              </h3>
+              <p className="text-center md:text-left text-gray-500 font-light mt-2 md:mt-0 px-4 md:pl-[5%]">
+                Results: {properties.length}
+              </p>
+            </div>
 
-            <FilterDropdown></FilterDropdown>
+            {/* Filter buttons */}
+            <div className="w-full md:w-auto flex flex-col md:flex-row items-stretch md:items-center gap-3 md:gap-4 px-4 md:px-0">
+              <div className="w-full md:w-auto">
+                <FilterDropdown />
+              </div>
 
-          {/* View on Map Button */}
-          <button className="flex items-center px-4 py-2 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
-            <img className="h-10 w-10 pr-2" src="https://i.ibb.co.com/PzmwQHck/map-717498.png" alt="MAP" />
-            <FaMapMarkerAlt className="mr-2 text-gray-600" />
-            <span className="font-medium">View on Map</span>
-          </button>
+              {/* View on Map Button */}
+              <button className="w-full md:w-auto flex items-center justify-center px-4 py-2 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
+                <img
+                  className="h-6 w-6 md:h-8 md:w-8 pr-2"
+                  src="https://i.ibb.co.com/PzmwQHck/map-717498.png"
+                  alt="MAP"
+                />
+                <FaMapMarkerAlt className="mr-2 text-gray-600 hidden md:block" />
+                <span className="font-medium text-sm md:text-base">
+                  <span className="hidden md:inline">View on</span> Map
+                </span>
+              </button>
+            </div>
+          </div>
         </div>
+
+        {/* Property Cards */}
+        <div className="container mx-auto px-4 md:px-0">
+          {properties.map((property) => (
+            <PropertyCard
+              key={property.id}
+              property={property}
+              loading={loading}
+              error={error}
+              checked={checked}
+              setChecked={setChecked}
+            />
+          ))}
         </div>
-        <div></div>
-        {properties.map((property) => (
-          <PropertyCard
-            key={property.id}
-            property={property}
-            loading={loading}
-            error={error}
-            checked={checked}
-            setChecked={setChecked}
-          ></PropertyCard>
-        ))}
       </div>
     </div>
   );

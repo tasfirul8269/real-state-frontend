@@ -4,7 +4,6 @@ import 'leaflet/dist/leaflet.css'; // Import Leaflet CSS
 
 function SimpleMap({coordinates}) {
 //   const position = [51.505, -0.09]; // Latitude and longitude
-console.log(coordinates)
 
   return (
     <MapContainer center={coordinates} zoom={13} style={{ height: '400px', width: '100%' }}>
