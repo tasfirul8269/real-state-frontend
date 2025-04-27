@@ -6,6 +6,7 @@ import OffPlanProperties from "../../components/OffPlanProperties/OffPlanPropert
 import PropertySearchTabs from "../../components/PropertySearchByFeature/PropertySearchByFeature";
 import FindConsultant from "../../components/FindConsultant/FindConsultant";
 import PropertyValuation from "../../components/PropertyValuation/PropertyValuation";
+import NewsAndInsights from "../../components/NewsAndInsights/NewsAndInsights";
 
 const Home = () => {
   return (
@@ -20,6 +21,7 @@ const Home = () => {
       <FindConsultant></FindConsultant>
       <OffPlanProperties></OffPlanProperties>
       <PropertyValuation></PropertyValuation>
+      <NewsAndInsights></NewsAndInsights>
       <PropertySearchTabs></PropertySearchTabs>
     </div>
   );

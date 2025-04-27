@@ -6,7 +6,7 @@ import 'animate.css';
 
 const ImageCarousel = () => {
   return (
-    <div className="w-full h-screen flex items-center justify-center bg-gray-100">
+    <div className="w-full h-screen flex items-center justify-center bg-gray-100 pt-32 md:pt-0">
       <div className="w-[90%]">
         <Swiper
           modules={[Navigation]}

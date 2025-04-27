@@ -58,8 +58,12 @@ const RegisterForm = () => {
       ];
       
 
-    return (
-        <div className='bg-blue-900 text-white flex items-center justify-center gap-3 '>
+    
+    
+    
+    
+      return (
+        <div className='bg-blue-900 text-white flex flex-col md:flex-row items-center justify-center gap-3 '>
             {/* register form text section */}
             <div className='space-y-4 p-10'>
                 <h3 className='text-3xl font-bold '>Register your interest in the acres by Meraas</h3>
@@ -106,7 +110,7 @@ const RegisterForm = () => {
             </div>
             
             {/* register form section */}
-            <div className="animate__animated animate__fadeInUp min-h-[20vh] m-10 w-3/5  flex items-center justify-center p-4">
+            <div className="animate__animated animate__fadeInUp min-h-[20vh] m-10 w-full md:w-3/5  flex items-center justify-center p-4">
                 <div className="bg-white rounded-2xl shadow-md w-full  p-20 transform transition-all duration-300 hover:shadow-lg "> 
                     <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center shadow-sm pb-2">
                         Register Your Interest
