@@ -13,7 +13,7 @@ const Home = () => {
     <div className="mb-10">
       <div className="relative">
         <Banner></Banner>
-        <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2  w-full max-w-4xl px-4 bg-gray-100 rounded-lg shadow-lg mx-auto p-4">
+        <div className="absolute -bottom-14 left-1/2 transform -translate-x-1/2  w-full max-w-4xl px-4 bg-white rounded-[20px] shadow-lg mx-auto p-4">
         <SearchField></SearchField>
         </div>
       </div>

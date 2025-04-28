@@ -1,16 +1,17 @@
 import React from "react";
 import "../../components/Navbar/colors.css"
+import bannerImg  from "../../assets/HeroImage.png"
 
 const Banner = () => {
   return (
     <div
-      className="hero min-h-screen mb-11 container mx-auto rounded-3xl overflow-hidden"  
+      className="hero min-h-screen mb-11 w-full  overflow-hidden"  
       style={{
         backgroundImage:
-          "url(https://www.hausandhaus.com/static/3f7ad20689be7438e2efe05dbba1809f/b501b/home_banner.webp)",
+          `url(${bannerImg})`,
       }}
     >
-      <div className="hero-overlay"></div>
+      <div className="bg-gray-500 opacity-30 hero-overlay"></div>
       <div className="hero-content text-neutral-content text-center">
         <div>
           <h1 className="mb-5 text-4xl md:text-5xl w-full font-bold text-white">Discover life at Dubai Creek Harbour</h1>

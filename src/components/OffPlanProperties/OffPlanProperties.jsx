@@ -8,18 +8,12 @@ import {
 } from "react-icons/fa";
 import "animate.css";
 import { FaLocationCrosshairs } from "react-icons/fa6";
-import { IoBedOutline } from "react-icons/io5";
-import { PiBathtubThin } from "react-icons/pi";
-import { GiKitchenScale } from "react-icons/gi";
+
 import bath from "../../assets/ic_bath.svg"
 import bed from "../../assets/ic_bed.svg";
 import kitchen from "../../assets/ic_kitchen.svg"
 
-
-
 const OffPlanProperties = () => {
-
-  
   const properties = [
     {
       name: "The Acres",
@@ -88,15 +82,12 @@ const OffPlanProperties = () => {
   ];
 
   return (
-    <div className=" px-4 py-12 animate__animated animate__fadeIn">
+    <div className="px-4 py-12 animate__animated animate__fadeIn">
       <h1 className="text-3xl font-bold text-[#083819] mb-6">
         Browse our Off Plan properties
       </h1>
 
       <div className="space-y-8">
-        {" "}
-        {/* Changed to flex column for better ad handling */}
-        {/* Split properties into chunks of 3 */}
         {Array.from({ length: Math.ceil(properties.length / 3) }).map(
           (_, chunkIndex) => {
             const startIndex = chunkIndex * 3;
@@ -109,60 +100,80 @@ const OffPlanProperties = () => {
                   {chunk.map((property, index) => (
                     <div
                       key={startIndex + index}
-                      className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp w-full`}
+                      className={`bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp w-full flex flex-col`}
+                      style={{ height: "650px" }} // Fixed height for the entire card
                     >
-                      {/* Property Image */}
-                      <div className="h-48 overflow-hidden rounded-lg">
+                      {/* Property Image - Fixed height */}
+                      <div className="h-56 overflow-hidden rounded-t-lg flex-shrink-0">
                         <img
                           src={property.image}
                           alt={property.name}
-                          className="w-full rounded-lg h-full object-cover transition-transform duration-500 hover:scale-105 p-1"
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 p-1"
                         />
                       </div>
 
-                      {/* Property Details */}
-                      <div className="p-6 border border-gray-300">
-                        {/* Property Name */} 
-                       <div className="flex items-center justify-between">
-                       <h2 className="text-xl font-semibold text-gray-800 mb-2">
-  {property.name.length > 20 ? `${property.name.substring(0, 20)}...` : property.name}
-</h2>
-                        <button className={`bg-${property.bgColor} btn btn-outline border-amber-600 text-amber-600 px-4 py-2`}>{property.propertyType}</button>
-                       </div>
-                        <p className="text-gray-600 mb-4 text-sm flex items-center">
-                          <FaLocationCrosshairs className="mr-2 text-blue-500" />{" "}
+                      {/* Property Details - Flex-grow to take remaining space */}
+                      <div className="p-6 border border-gray-300 flex-grow flex flex-col">
+                        {/* Property Name and Type */}
+                        <div className="flex items-center justify-between mb-4">
+                          <h2 className="text-xl font-semibold text-gray-800 line-clamp-1">
+                            {property.name}
+                          </h2>
+                          <button className={`bg-${property.bgColor} btn btn-outline border-amber-600 text-amber-600 px-4 py-2`}>
+                            {property.propertyType}
+                          </button>
+                        </div>
+                        
+                        {/* Location - Fixed height */}
+                        <p className="text-gray-600 mb-4 text-sm flex items-center h-6">
+                          <FaLocationCrosshairs className="mr-2 text-blue-500" />
                           {property.location}
                         </p>
 
-                     <div className="flex justify-between items-center gap-2 ">
-                     <div className="text-gray-500 flex items-center mb-4 ">
-                          <img src={bed} alt="Bed" className="mr-2" />
-                          <p>{property.beds}</p>
+                        {/* Property Features - Fixed height */}
+                        <div className="flex justify-between items-center gap-2 mb-6 h-10">
+                          <div className="text-gray-500 flex items-center">
+                            <img src={bed} alt="Bed" className="mr-2" />
+                            <p>{property.beds}</p>
+                          </div>
+                          <div className="text-gray-500 flex items-center">
+                            <img src={bath} alt="Bathroom" className="mr-2" />
+                            <p>{property.baths}</p>
+                          </div>
+                          <div className="text-gray-500 flex items-center">
+                            <img src={kitchen} alt="Kitchen" className="mr-2" />
+                            <p>{property.baths}</p>
+                          </div>
                         </div>
-                        <div className="text-gray-500 flex items-center mb-4">
-                          <img src={bath} alt="Bathroom" className="mr-2" />
-                          <p>{property.baths}</p>
+
+                        {/* Agent Info - Fixed height */}
+                        <div className="flex items-center gap-4 mb-6 h-20">
+                          <img 
+                            src={property.agentImage} 
+                            alt={property.agentName} 
+                            className="rounded-full w-14 h-14 object-cover"
+                          />
+                          <div className="flex-grow">
+                            <p className="text-xs text-gray-500">
+                              {property.languages.map((lang, index) => (
+                                <span key={lang}>
+                                  {lang}{index < property.languages.length - 1 ? ', ' : ''}
+                                </span>
+                              ))}
+                            </p>
+                            <h2 className="text-sm font-semibold text-gray-800 line-clamp-1">
+                              {property.agentName}
+                            </h2>
+                          </div>
+                          <p className="text-lg font-semibold whitespace-nowrap">
+                            {property.price}
+                          </p>
                         </div>
-                        <div className="text-gray-500 flex items-center mb-4">
-                        <img src={kitchen} alt="Kitchen" className="mr-2" />
-                          <p>{property.baths}</p>
-                        </div>
-                     </div>
 
-                      <div className="flex items-center gap-4">
-                        <img src={property.image} alt={property.name} className="rounded-full w-14 h-14 my-2" />
-                        <div>
-    <p className="text-xs text-gray-500">{property.languages.map((lang, index) => <span>{lang}{index < property.languages.length - 1 ? ', ' : ''}</span>)}</p>
-    <h2 className="text-sm font-semibold text-gray-800 mb-2">
-    {property.agentName.length > 15 ? `${property.name.substring(0, 15)}...` : property.agentName}</h2>
-  </div>
-                    <p className="text-lg font-semibold">{property.price}</p>
-                      </div>
+                        <div className="border border-gray-200 my-2"></div>
 
-                        <div className="border font-extralight border-gray-200"></div>
-
-                        {/* Action Buttons */}
-                        <div className="flex space-x-4 justify-between mt-6 pb-5">
+                        {/* Action Buttons - Fixed height at bottom */}
+                        <div className="flex space-x-4 justify-between mt-auto pt-4">
                           <button className="flex items-center justify-center px-4 py-2 btn btn-outline rounded-md bg-[#E6E6E6] text-[#8D8D8D] hover:text-white hover:bg-gray-700 border-none transition flex-1">
                             <FaPhone className="mr-2 text-md" /> Call
                           </button>
@@ -180,7 +191,7 @@ const OffPlanProperties = () => {
 
                 {/* Insert ad after each chunk except the last one if it's not complete */}
                 {chunkIndex < Math.ceil(properties.length / 3) - 1 && (
-                  <div className="w-full p-6 bg-gray-100 rounded-lg text-center ">
+                  <div className="w-full p-6 bg-gray-100 rounded-lg text-center">
                     <h3 className="text-xl font-bold mb-2">Special Offer!</h3>
                     <p className="mb-4">
                       Check out our exclusive deals for premium properties
