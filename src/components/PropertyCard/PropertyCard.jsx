@@ -2,7 +2,7 @@ import "animate.css";
 import { FaPhone, FaWhatsapp, FaCalendarAlt } from "react-icons/fa";
 import { IoIosExpand } from "react-icons/io";
 import { IoBedSharp } from "react-icons/io5";
-import { LiaBathSolid } from "react-icons/lia";
+import { LiaBathSolid, LiaBedSolid } from "react-icons/lia";
 import { MdLocationOn } from "react-icons/md";
 import { Link } from "react-router-dom";
 
@@ -23,11 +23,14 @@ const PropertyCard = ({ property, loading, error }) => {
 
   return (
     <div
-    to="/property-details"
-    className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-4 border border-spacing-0.5 border-gray-200 my-6 min-h-[50vh]  overflow-hidden"
-  >
-     {/* Image container with video fixes */}
-     <Link to="/property-details" className="flex gap-1 animate__animated animate__fadeInUp rounded-md w-3/3 h-full min-h-0">
+      to="/property-details"
+      className="container mx-auto p-0 bg-white rounded-xl animate__animated animate__fadeIn grid md:grid-cols-2 gap-4 border border-spacing-0.5 border-gray-200 my-6 min-h-[50vh]  overflow-hidden"
+    >
+      {/* Image container with video fixes */}
+      <Link
+        to="/property-details"
+        className="flex gap-1 animate__animated animate__fadeInUp rounded-md w-3/3 h-full min-h-0"
+      >
         {/* Main Media */}
         {property.mainImage.match(/\.(mp4|mov|avi)$/i) ? (
           <video
@@ -46,119 +49,120 @@ const PropertyCard = ({ property, loading, error }) => {
         )}
 
         <div className="flex w-1/4 flex-col gap-1">
-          {property.galleryImages
-            .slice(0, 3)
-            .map((media, index) =>
-              media.match(/\.(mp4|mov|avi)$/i) ? (
-                <video
-                  key={index}
-                  src={media}
-                  className="w-full h-full object-cover rounded-md" // Added h-full
-                  controls
-                  muted
-                  loop
-                />
-              ) : (
-                <img
-                  key={index}
-                  src={media}
-                  alt=""
-                  className="w-full h-full object-cover rounded-md"
-                />
-              )
-            )}
-        </div>
-      </Link>
-  
-   {/* Property details container with spacing adjustments */}
-   <div className="flex flex-col items-start justify-start animate__animated animate__fadeInUp h-full overflow-y-auto pr-2">
-      {/* Price and Location */}
-      <Link to="/property-details" className="w-full">
-        <div className="space-y-2">
-          <div className="text-xl font-bold text-gray-800 pt-4">
-            {property.price}
-          </div>
-          <div className="flex items-center text-sm text-gray-600">
-            <MdLocationOn className="mr-1" />
-            <span className="text-red-800">{property.location}</span>
-          </div>
-  
-          {/* Property Features */}
-          <div className="flex flex-wrap justify-start items-center">
-            {property.features.map((feature, index) => (
-              <h2
-                className="text-xl font-semibold text-black"
+          {property.galleryImages.slice(0, 3).map((media, index) =>
+            media.match(/\.(mp4|mov|avi)$/i) ? (
+              <video
                 key={index}
-              >
-                {feature} |{" "}
-              </h2>
-            ))}
-          </div>
-  
-          {/* Property Type */}
-          <div className="flex items-center gap-3 py-2">
-            <p className="text-red-950 text-xs font-medium">
-              {property.type}
-            </p>
-            <p className="flex items-center gap-1.5 font-medium">
-              <IoBedSharp className="text-2xl" /> {property.bedrooms}
-            </p>
-            <p className="flex items-center gap-1.5 font-medium">
-              <LiaBathSolid className="text-2xl" /> {property.bathrooms}
-            </p>
-            <p className="flex items-center gap-1.5 font-medium">
-              <IoIosExpand className="text-2xl" /> BUA: {property.area} sq.ft
-            </p>
-          </div>
-        </div>
-  
-        {/* Agent Information */}
-        <div className="flex items-center gap-6 mt-7 pb-0">
-          <img
-            src={property.agent.photo}
-            className="w-12 h-12 rounded-xl"
-            alt={property.agent.name}
-          />
-          <div>
-            <h3 className="text-sm font-bold">{property.agent.name}</h3>
-            <p className="text-sm text-gray-400">
-              Speaks:{" "}
-              {property.agent.languages.map((language, index) => (
-                <span key={index}> {language},</span>
-              ))}
-            </p>
-          </div>
+                src={media}
+                className="w-full h-full object-cover rounded-md" // Added h-full
+                controls
+                muted
+                loop
+              />
+            ) : (
+              <img
+                key={index}
+                src={media}
+                alt=""
+                className="w-full h-full object-cover rounded-md"
+              />
+            )
+          )}
         </div>
       </Link>
-  
-      {/* Action Buttons */}
-      <div
-        onClick={() => {
-          window.location.href = "tel:+1234567890";
-        }}
-        className="flex w-full items-center gap-4 border-t border-gray-200 py-3"
-      >
-        <button className="btn btn-outline px-6 border-none py-4 flex items-center justify-center text-black hover:text-white bg-red-50 hover:bg-red-500 transition-colors rounded-md">
-          <FaPhone className="mr-2" />
-          <span>Call</span>
+
+      {/* Property details container with spacing adjustments */}
+      <div className="flex flex-col items-start justify-start animate__animated animate__fadeInUp h-full overflow-y-auto pr-2 ">
+        {/* Price and Location */}
+        <Link to="/property-details" className="w-full">
+          <div className="space-y-2">
+            <div className="text-2xl font-medium text-[#256FFF] pt-4">
+              {property.price}
+            </div>
+            <div className="flex items-center text-sm text-gray-600">
+              <MdLocationOn className="mr-1" />
+              <span className="text-[#999999]">{property.location}</span>
+            </div>
+
+            {/* Property Features */}
+            <div className="flex flex-wrap justify-start items-center">
+              {property.features.map((feature, index) => (
+                <h2 className="text-xl font-[400] text-gray-700" key={index}>
+                  {feature} |{" "}
+                </h2>
+              ))}
+            </div>
+
+            {/* <p className="text-red-950 text-sm font-medium">{property.type}</p> */}
+
+            <button className="btn btn-outline outline-[#FFBF6A] bg-[#FFF5E7] btn-warning text-[#FF9B17]">
+          {property.type}
         </button>
+
+            {/* Property Type */}
+            <div className="flex items-center gap-5 py-2">
+              <p className="flex text-[#999999] items-center gap-1.5 font-medium">
+                <LiaBedSolid className="text-2xl text-[#999999]" /> {property.bedrooms}
+              </p>
+              <p className="flex text-[#999999]  items-center gap-1.5 font-medium">
+                <LiaBathSolid className="text-2xl " /> {property.bathrooms}
+              </p>
+              <p className="flex text-[#999999] items-center gap-1.5 font-medium">
+                <IoIosExpand className="text-2xl" /> BUA: {property.area} sq.ft
+              </p>
+            </div>
+          </div>
+
+          {/* Agent Information */}
+          <div className="flex items-center gap-6 mt-12 pb-0">
+            <img
+              src={property.agent.photo}
+              className="w-16 h-16 rounded-xl"
+              alt={property.agent.name}
+            />
+            <div>
+              <h3 className="text-sm font-bold">{property.agent.name}</h3>
+              <p className="text-sm text-gray-400">
+                Speaks:{" "}
+                {property.agent.languages.map((language, index) => (
+                  <span className="mr-3" key={index}> {language},</span>
+                ))}
+              </p>
+            </div>
+          </div>
+        </Link>
+
+        {/* Action Buttons */}
+
+   
+
         <div
           onClick={() => {
-            window.location.href = "https://wa.me/1234567890";
+            window.location.href = "tel:+1234567890";
           }}
-          target="_blank"
-          className="btn btn-outline px-6 py-4 border-none rounded-md flex items-center justify-center text-black hover:text-white hover:bg-red-500 bg-red-50 transition-colors"
+          className="flex w-full items-center gap-8 border-t border-gray-200 mt-6 py-3"
         >
-          <FaWhatsapp className="mr-2" />
-          <span>Whatsapp</span>
+          <button className="cursor-pointer flex justify-center items-center gap-2 text-[#999999] bg-[#E6E6E6] px-4 py-3 rounded-md">
+            <FaPhone />
+            <span className="font-semibold">Call</span>
+          </button>
+
+          <button
+            onClick={() => {
+              window.location.href = "https://wa.me/1234567890";
+            }}
+            className="flex cursor-pointer justify-center items-center gap-2 text-[#00BD6E] bg-[#E5FFF1] px-4 py-3 rounded-md"
+          >
+            <FaWhatsapp />
+            <span className="font-semibold">Whatsapp</span>
+          </button>
+          
+          <button className="flex cursor-pointer justify-center items-center gap-2 text-[#256FFF] bg-[#EBF8FF] px-4 py-3 rounded-md">
+            <span className="font-semibold">Book a viewing</span>
+          </button>
         </div>
-        <button className="btn btn-outline px-6 py-4 border-none rounded-md flex items-center justify-center text-black hover:text-white hover:bg-red-500 bg-red-50 transition-colors">
-          <FaCalendarAlt className="mr-2" />
-          <span>Book a Viewing</span>
-        </button>
       </div>
     </div>
-  </div>
   );
 };
 

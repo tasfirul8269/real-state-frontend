@@ -11,6 +11,7 @@ import bath from "../../assets/ic_bath.svg";
 import bed from "../../assets/ic_bed.svg";
 import kitchen from "../../assets/vector-1.svg";
 import divider from "../../assets/line-2.svg";
+import { LiaBathSolid, LiaBedSolid } from "react-icons/lia";
 
 const ProCard = ({ property }) => {
   console.log(property.beds);
@@ -35,17 +36,17 @@ const ProCard = ({ property }) => {
       </div>
 
       {/* features container */}
-      <div className="flex justify-between items-center my-4">
+      <div className="flex justify-start gap-16 items-center my-4">
         <div className="text-[#999999] flex justify-start items-center gap-3">
-          <img src={bed} alt="bed" />
+          <LiaBedSolid className="text-2xl" />
           <p className="text-xl">{property?.beds}</p>
         </div>
         <div className="text-[#999999] flex justify-start items-center gap-3">
-          <img src={bath} alt="bath" />
+        <LiaBathSolid  className="text-2xl" />
           <p className="text-xl">{property?.baths}</p>
         </div>
         <div className="text-[#999999] flex justify-start items-center gap-3">
-          <img src={kitchen} alt="Kitchen" />
+          <img className="w-6  h-6" src={kitchen} alt="Kitchen" />
           <p className="text-xl">{property?.kitchens}</p>
         </div>
       </div>

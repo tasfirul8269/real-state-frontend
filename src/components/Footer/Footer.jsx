@@ -12,7 +12,7 @@ const Footer = () => {
             News and insights straight to your inbox. We don't spam.
           </p>
 
-          <div className="flex flex-col w-full gap-2">
+          <div className="flex flex-col w-full md:w-[76%] gap-2">
             <div className="relative w-full">
               <input
                 type="email"
