@@ -38,11 +38,11 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <div className=" py-12 grid md:grid-cols-3 gap-8  my-14 animate__animated animate__fadeInUp ">
+    <div className=" py-12 grid w-full md:grid-cols-3 gap-8  my-14 animate__animated animate__fadeInUp ">
       {servicesData.map((service) => (
         <div
           key={service.id}
-          className={`card ${service.bgColor} relative text-start`}
+          className={`card ${service.bgColor} relative text-start w-full`}
         >
           <img className="relative  border border-gray-300 rounded-xl" src={service.backgroundImage}  />
           <div className=" absolute left-[5%] top-[10%]">
