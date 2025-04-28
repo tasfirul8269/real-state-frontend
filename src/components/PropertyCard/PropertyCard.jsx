@@ -80,7 +80,7 @@ const PropertyCard = ({ property, loading, error }) => {
           </div>
           <div className="flex items-center text-sm text-gray-600">
             <MdLocationOn className="mr-1" />
-            <span className="text-red-800">{property.location.address}</span>
+            <span className="text-red-800">{property.location}</span>
           </div>
   
           {/* Property Features */}
