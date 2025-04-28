@@ -38,7 +38,7 @@ const servicesData = [
 
 const Services = () => {
   return (
-    <div className="mx-auto px-4 py-12 grid md:grid-cols-3 gap-8  my-14 container animate__animated animate__fadeInUp ">
+    <div className=" py-12 grid md:grid-cols-3 gap-8  my-14 animate__animated animate__fadeInUp ">
       {servicesData.map((service) => (
         <div
           key={service.id}

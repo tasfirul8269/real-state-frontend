@@ -43,7 +43,7 @@ const FindConsultant = () => {
        </div>
         
       {/* Title and Description */}
-      <div className="mb-6  ">
+      <div className="mb-6 ">
         <h2 className="text-2xl font-medium text-white mb-1 leading-tight">Find your consultant</h2>
         <p className="text-sm text-white">Search our team of 50+ property experts to get professional guidance.</p>
       </div>

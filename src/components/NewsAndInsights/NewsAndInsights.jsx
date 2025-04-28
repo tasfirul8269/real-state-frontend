@@ -37,7 +37,7 @@ const NewsAndInsights = () => {
     ]
 
     return (
-        <div className='bg-gray-100 py-20 md:py-40 px-4 sm:px-6 lg:px-8'>
+        <div className='bg-gray-100 py-20 md:py-40  sm:px-6 '>
             <div className='max-w-7xl mx-auto'>
                 {/* Header Section */}
                 <div className='flex flex-col md:flex-row justify-between items-start md:items-center mb-8 space-y-4 md:space-y-0 px-4'>
@@ -49,7 +49,7 @@ const NewsAndInsights = () => {
 
                 {/* News Cards Grid */}
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 xl:gap-8'>
-                    {newsInsights.map(newsInsight => (
+                    {newsInsights.slice(0,3).map(newsInsight => (
                         <NewsInsightCard 
                             key={newsInsight.id} 
                             newsInsight={newsInsight}
