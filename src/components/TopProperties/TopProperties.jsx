@@ -3,7 +3,7 @@
 import React from 'react';
 import ProCard from "../ProCard/ProCard";
 
-const OffPlanProperties = () => {
+const TopProperties = () => {
   
   const properties = [
         {
@@ -79,16 +79,16 @@ const OffPlanProperties = () => {
 
   return (
     <div className="px-0 py-8 animate__animated animate__fadeIn">
-      <h1 className="text-2xl md:text-3xl font-bold text-[#083819] mb-4">Browse our Off Plan properties</h1>
+      <h1 className="text-2xl md:text-3xl font-bold text-[#083819] mb-4">Browse our top properties</h1>
       {/* cards container */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6">
         {/* card */}
         {
-          properties.map((property, index) => <ProCard key={index} property={property}></ProCard>)
+          properties.slice(0,3).map((property, index) => <ProCard key={index} property={property}></ProCard>)
         }
       </div>
     </div>
   );
 };
 
-export default OffPlanProperties;
+export default TopProperties;

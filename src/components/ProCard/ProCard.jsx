@@ -2,10 +2,7 @@ import React from "react";
 import {
   FaPhone,
   FaWhatsapp,
-  FaMapMarkerAlt,
-  FaCalendarAlt,
-  FaMoneyBillWave,
-  FaBuilding,
+
 } from "react-icons/fa";
 import "animate.css";
 
@@ -18,7 +15,7 @@ import divider from "../../assets/line-2.svg";
 const ProCard = ({ property }) => {
   console.log(property.beds);
   return (
-    <div className="p-4 border border-[#e6e6e6] rounded-[20px] animate__animated animate__fadeInUp]">
+    <div className="p-4 my-5 md:my-0 border border-[#e6e6e6] rounded-[20px] animate__animated animate__fadeInUp]">
       <img src={property?.image} alt={property?.name} className="rounded-[15px]" />
       <div className="flex justify-between items-center my-4">
         <h3 className="text-2xl font-semibold">
