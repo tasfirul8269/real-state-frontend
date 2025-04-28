@@ -262,7 +262,7 @@ const PropertySearchBar = () => {
   };
 
   return (
-    <div className="w-full mx-auto p-4 md:p-6 bg-amber-50 rounded-lg shadow-lg animate__animated animate__fadeIn">
+    <div className="w-full mx-auto p-4 md:p-6 bg-white rounded-lg shadow-lg animate__animated animate__fadeIn">
   <Tabs 
     selectedIndex={activeTab} 
     onSelect={(index) => {
@@ -514,8 +514,9 @@ const PropertySearchBar = () => {
       {/* Search Button */}
       <button 
         onClick={handleSearch}
-        className="bg-red-600 text-white p-2 md:p-3 rounded-full hover:bg-red-700 transition min-w-[50px] h-[50px] flex items-center justify-center flex-shrink-0 cursor-pointer self-center md:self-auto"
+        className="bg-red-600 text-white p-2 md:p-3 w-full md:w-auto rounded-lg md:rounded-full hover:bg-red-700 transition min-w-[50px] h-[50px] flex items-center justify-center flex-shrink-0 cursor-pointer self-center md:self-auto"
       >
+        <span className="text-white pr-3 md:hidden">Search</span>
         <CiSearch className="text-xl md:text-2xl" />
       </button>
     </div>

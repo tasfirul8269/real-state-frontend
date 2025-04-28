@@ -49,8 +49,10 @@ const Buy = () => {
                 <FilterDropdown />
               </div>
 
+              
+
               {/* View on Map Button */}
-              <button className="w-full md:w-auto flex items-center justify-center px-4 py-2 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
+              <div className="w-[46%] md:w-auto flex items-center px-4 py-3 bg-white text-gray-800 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200 shadow-sm">
                 <img
                   className="h-6 w-6 md:h-8 md:w-8 pr-2"
                   src="https://i.ibb.co.com/PzmwQHck/map-717498.png"
@@ -60,7 +62,7 @@ const Buy = () => {
                 <span className="font-medium text-sm md:text-base">
                   <span className="hidden md:inline">View on</span> Map
                 </span>
-              </button>
+              </div>
             </div>
           </div>
         </div>
