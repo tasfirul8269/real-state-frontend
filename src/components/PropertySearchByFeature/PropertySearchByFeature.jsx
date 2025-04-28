@@ -42,7 +42,7 @@ const PropertySearchByFeature = () => {
 
   return (
     <div className=" p-6 bg-white rounded-lg shadow-md mb-10 animate__animated animate__fadeInUp">
-      <h1 className="text-2xl font-bold text-gray-800 mb-6">Search properties by feature</h1>
+      <h1 className="text-2xl font-bold text-gray-800 mb-2.5">Search properties by feature</h1>
       
       <Tabs selectedIndex={activeTab} onSelect={(index) => setActiveTab(index)}>
         <TabList className="flex border-b border-gray-200 mb-6 justify-end">

@@ -9,9 +9,11 @@ import {
 import "animate.css";
 import { FaLocationCrosshairs } from "react-icons/fa6";
 
+import locationImg from '../../assets/group-39519-2.svg'
 import bath from "../../assets/ic_bath.svg"
 import bed from "../../assets/ic_bed.svg";
-import kitchen from "../../assets/ic_kitchen.svg"
+import kitchen from "../../assets/vector-1.svg";
+import divider from "../../assets/line-2.svg";
 
 const OffPlanProperties = () => {
   const properties = [
@@ -98,100 +100,113 @@ const OffPlanProperties = () => {
                 {/* Property grid for this chunk */}
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-2 md:gap-6  ">
                   {chunk.map((property, index) => (
-                    <div
-                      key={startIndex + index}
-                      className={`bg-white shadow-md overflow-hidden hover:shadow-lg transition-all duration-300 animate__animated animate__fadeInUp w-full flex flex-col rounded-[15px]`}
-                      style={{ height: "600px" }} // Slightly reduced height
-                    >
-                      {/* Property Image - Fixed height */}
-                      <div className="h-48 overflow-hidden rounded-[10px] flex-shrink-0">
-                        <img
-                          src={property.image}
-                          alt={property.name}
-                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 p-1"
-                        />
-                      </div>
-
-                      {/* Property Details - Flex-grow to take remaining space */}
-                      <div className="p-4 md:p-5 border border-gray-300 flex-grow flex flex-col">
-                        {/* Property Name and Type */}
-                        <div className="flex items-center justify-between mb-2">
-                          <h2 className="text-lg md:text-xl font-semibold text-gray-800 line-clamp-1">
-                            {property.name}
-                          </h2>
-                          <button className={`bg-${property.bgColor} btn btn-outline border-amber-600 text-amber-600 px-3 py-1 text-sm`}>
-                            {property.propertyType}
-                          </button>
-                        </div>
-                        
-                        {/* Location - Fixed height */}
-                        <p className="text-gray-600 mb-2 text-xs md:text-sm flex items-center h-6">
-                          <FaLocationCrosshairs className="mr-1 text-blue-500" />
-                          {property.location}
-                        </p>
-
-                        {/* Property Features - Fixed height */}
-                        <div className="flex justify-between items-center gap-1 mb-4 h-8">
-                          <div className="text-gray-500 flex items-center text-sm">
-                            <img src={bed} alt="Bed" className="mr-1 w-4" />
-                            <p>{property.beds}</p>
-                          </div>
-                          <div className="text-gray-500 flex items-center text-sm">
-                            <img src={bath} alt="Bathroom" className="mr-1 w-4" />
-                            <p>{property.baths}</p>
-                          </div>
-                          <div className="text-gray-500 flex items-center text-sm">
-                            <img src={kitchen} alt="Kitchen" className="mr-1 w-4" />
-                            <p>{property.baths}</p>
-                          </div>
-                        </div>
-
-                        {/* Agent Info - Fixed height */}
-                        <div className="flex items-center gap-2 mb-4 h-14">
-                          <img 
-                            src={property.agentImage} 
-                            alt={property.agentName} 
-                            className="rounded-full w-10 h-10 md:w-12 md:h-12 object-cover"
-                          />
-                          <div className="flex-grow">
-                            <p className="text-xs text-gray-500">
-                              {property.languages.map((lang, index) => (
-                                <span key={lang}>
-                                  {lang}{index < property.languages.length - 1 ? ', ' : ''}
-                                </span>
-                              ))}
-                            </p>
-                            <h2 className="text-xs md:text-sm font-semibold text-gray-800 line-clamp-1">
-                              {property.agentName}
-                            </h2>
-                          </div>
-                          <p className="text-sm md:text-base font-semibold whitespace-nowrap">
-                            {property.price}
-                          </p>
-                        </div>
-
-                        <div className="border border-gray-200 my-2"></div>
-
-                        {/* Action Buttons - Fixed height at bottom */}
-                        <div className="flex space-x-2 justify-between mt-auto">
-                          <button className="flex items-center justify-center px-2 py-1 md:px-3 md:py-2 btn btn-outline rounded-md bg-[#E6E6E6] text-[#8D8D8D] hover:text-white hover:bg-gray-700 border-none transition flex-1 text-xs md:text-sm">
-                            <FaPhone className="mr-1 text-xs md:text-sm" /> Call
-                          </button>
-                          <button className="flex items-center justify-center px-2 py-1 md:px-3 md:py-2 btn btn-outline rounded-md bg-[#E5FFF1] text-[#00BD6E] hover:text-white hover:bg-green-700 border-none transition flex-1 text-xs md:text-sm">
-                            <FaWhatsapp className="text-sm md:text-base" /> Whatsapp
-                          </button>
-                          <button className="flex items-center justify-center px-2 py-1 md:px-3 md:py-2 btn btn-outline rounded-md bg-[#EBF8FF] text-[#256FFF] hover:text-white hover:bg-blue-700 border-none transition flex-1 text-xs md:text-sm">
-                            Booking
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                     <div key={index} className="flex flex-col items-start gap-5 p-4 bg-white rounded-xl border border-solid border-gray-200 shadow-sm">
+                     {/* Property Image */}
+                     <div 
+                       className="relative w-full h-[214px] bg-[url(${property.image})] bg-cover bg-center rounded-md mb-5"
+                     >
+                      <img className="w-full" src={property.image} alt={property.name} />
+                     </div>
+               
+                     {/* Property Details */}
+                     <div className="w-full space-y-5">
+                       {/* Title and Property Type */}
+                       <div className="flex items-center justify-between w-full">
+                       <h2 className="font-medium text-2xl text-black font-montserrat">
+  {property.name.length > 20 ? `${property.name.substring(0, 20)}...` : property.name}
+</h2>
+                         <span className="inline-flex items-center bg-amber-50 text-amber-600 border border-amber-300 rounded-md px-2.5 py-1 text-sm font-medium font-montserrat">
+                           {property.propertyType}
+                         </span>
+                       </div>
+               
+                       {/* Location */}
+                       <div className="flex items-center gap-2.5">
+                         <img 
+                           className="w-4 h-4" 
+                           alt="Location" 
+                           src={locationImg}
+                         />
+                         <p className="font-medium text-base text-gray-400 font-montserrat">
+                           {property.location}
+                         </p>
+                       </div>
+               
+                       {/* Features */}
+                       <div className="flex items-center gap-8">
+                         {/* Bedrooms */}
+                         <div className="flex items-center gap-2.5">
+                           <img className="w-4 h-4" alt="Bed" src={bed} />
+                           <span className="font-medium text-base text-gray-400 font-montserrat">{property.beds}</span>
+                         </div>
+                         
+                         <img className="w-px h-3.5 object-cover" alt="Separator" src={divider} />
+                         
+                         {/* Bathrooms */}
+                         <div className="flex items-center gap-2.5">
+                           <div className="relative w-6 h-3">
+                             <img className="absolute w-6 h-2.5 top-0 left-0" alt="Bath" src={bath} />
+                             <img className="absolute w-1 h-1 top-2.5 left-1" alt="Bath-detail-0" src="/vector.svg" />
+                             <img className="absolute w-1 h-1 top-2.5 left-4" alt="Bath-detail-1" src="/vector-4.svg" />
+                             <img className="absolute w-1 h-1 top-1 left-1" alt="Bath-detail-2" src="/vector-3.svg" />
+                           </div>
+                           <span className="font-medium text-base text-gray-400 font-montserrat">02</span>
+                         </div>
+                         
+                         <img className="w-px h-3.5 object-cover" alt="Separator" src="/line-7.svg" />
+                         
+                         {/* Kitchens */}
+                         <div className="flex items-center gap-2.5">
+                           <img className="w-6 h-4" alt="Kitchen" src={kitchen} />
+                           <span className="font-medium text-base text-gray-400 font-montserrat">{property.kitchens}</span>
+                         </div>
+                       </div>
+               
+                       {/* Agent Info and Price */}
+                       <div className="flex items-center justify-between w-full">
+                         <div className="flex items-center gap-4">
+                           <img 
+                             className="w-16 h-16 rounded-full object-cover" 
+                             alt="Owner" 
+                             src={property.agentImage}
+                           />
+                           <div className="flex flex-col">
+                             <h3 className="font-normal text-base text-black font-poppins">{property.agentName}</h3>
+                             <p className="font-normal text-sm text-gray-400 font-poppins">
+                               Speaks: {
+                                 property.languages.map((language, index) => <span>{language}{index < property.languages.length - 1 ? ', ' : ''}</span>)
+                               }
+                             </p>
+                           </div>
+                         </div>
+                         <p className="font-normal text-xl text-black font-poppins">
+  {String(property.price).length > 10 ? `${String(property.price).substring(0, 10)}...` : property.price}
+</p>
+                       </div>
+               
+                       {/* Divider */}
+                       <div className="w-full h-px bg-gray-200"></div>
+               
+                       {/* Action Buttons */}
+                       <div className="flex items-center justify-between w-full h-16">
+                         <button className="inline-flex items-center justify-center h-11 cursor-pointer rounded-xl font-medium text-sm bg-gray-100 text-gray-500 w-20 font-montserrat hover:bg-gray-200 transition">
+                           Call
+                         </button>
+                         <button className="inline-flex items-center justify-center h-11 cursor-pointer rounded-xl font-medium text-sm bg-green-50 text-green-600 font-montserrat hover:bg-green-100 transition">
+                           Whatsapp
+                         </button>
+                         <button className="inline-flex items-center justify-center h-11 cursor-pointer rounded-xl font-medium text-sm bg-blue-50 text-blue-600 font-montserrat hover:bg-blue-100 transition">
+                           Book a viewing
+                         </button>
+                       </div>
+                     </div>
+                   </div>
                   ))}
                 </div>
 
                 {/* Insert ad after each chunk except the last one if it's not complete */}
                 {chunkIndex < Math.ceil(properties.length / 3) - 1 && (
-                  <div className="w-full p-4 bg-gray-100 rounded-lg text-center">
+                  <div className="w-full bg-gray-100 rounded-lg text-center">
                     <h3 className="text-lg md:text-xl font-bold mb-1">Special Offer!</h3>
                     <p className="mb-2 text-sm">
                       Check out our exclusive deals for premium properties

@@ -21,16 +21,16 @@ const Banner = () => {
           </h1>
           
           {/* Paragraph - responsive spacing and font size */}
-          <p className="mb-4 md:mb-5 text-xs sm:text-sm md:text-base">
+          <p className="mb-4 md:mb-5 text-xs sm:text-sm md:text-base text-white">
           We provide a complete service for the sale,
           purchase or rental of real estate
           </p>
           
           {/* Button - responsive sizing */}
-          <button className="px-4 py-2 sm:px-5 sm:py-2 md:px-7 md:py-3 text-xs sm:text-sm border border-blue-400 font-bold rounded-full text-white hover:text-blue-300 mr-2  hover:bg-white cursor-pointer transition-colors duration-200">
+          <button className="px-4 py-2 sm:px-5 sm:py-2 md:px-7 md:py-3 text-xs sm:text-sm border-2 border-blue-400 font-bold rounded-full text-white hover:text-blue-500 mr-2  hover:bg-white cursor-pointer transition-colors duration-200">
             Learn More
           </button>
-          <button className="px-4 py-2 sm:px-5 sm:py-2 md:px-7 md:py-3 text-xs sm:text-sm border-none font-bold rounded-full text-gray-200 hover:text-white bg-red-400 hover:bg-red-700 cursor-pointer transition-colors duration-200">
+          <button className="px-4 py-2 sm:px-5 sm:py-2 md:px-7 md:py-3 text-xs sm:text-sm border-none font-bold rounded-full text-gray-200 hover:text-white bg-[#256FFF] hover:bg-blue-700 cursor-pointer transition-colors duration-200">
             Read the article
           </button>
         </div>

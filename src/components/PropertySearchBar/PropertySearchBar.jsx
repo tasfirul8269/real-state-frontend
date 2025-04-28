@@ -280,7 +280,7 @@ const PropertySearchBar = () => {
   >
     <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch md:items-center w-full">
       {/* Tabs Section */}
-      <TabList className="flex flex-row flex-wrap gap-2  p-1 md:p-2 rounded-lg min-h-[50px] w-full md:w-auto">
+      <TabList className="flex items-center gap-2  p-1 md:p-2 rounded-lg min-h-[50px] w-full md:w-auto">
         <Tab
           className={`flex-grow md:flex-grow-0 px-3 md:px-4 py-2 text-sm font-medium rounded-md cursor-pointer transition-all duration-300 flex items-center justify-center ${
             activeTab === 0

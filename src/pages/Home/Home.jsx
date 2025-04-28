@@ -22,8 +22,8 @@ const Home = () => {
       <FindConsultant></FindConsultant>
       <OffPlanProperties></OffPlanProperties>
       <PropertyValuation></PropertyValuation>
-      <NewsAndInsights></NewsAndInsights>
       <PropertySearchTabs></PropertySearchTabs>
+      <NewsAndInsights></NewsAndInsights>
       </div>
     </div>
   );

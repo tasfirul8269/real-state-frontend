@@ -66,7 +66,7 @@ const Buy = () => {
         </div>
 
         {/* Property Cards */}
-        <div className="container mx-auto px-4 md:px-0">
+        <div className="container mx-auto p-4 border md:px-0">
           {properties.map((property) => (
             <PropertyCard
               key={property.id}
