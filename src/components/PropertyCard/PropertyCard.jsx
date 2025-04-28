@@ -74,7 +74,7 @@ const PropertyCard = ({ property, loading, error }) => {
       {/* Property details container with spacing adjustments */}
       <div className="flex flex-col items-start justify-start animate__animated animate__fadeInUp h-full overflow-y-auto pr-2 ">
         {/* Price and Location */}
-        <Link to="/property-details" className="w-full">
+        <Link to="/property-details" className="w-full pl-[15px] md:pl-0">
           <div className="space-y-2">
             <div className="text-2xl font-medium text-[#256FFF] pt-4">
               {property.price}
@@ -100,7 +100,7 @@ const PropertyCard = ({ property, loading, error }) => {
         </button>
 
             {/* Property Type */}
-            <div className="flex items-center gap-5 py-2">
+            <div className="flex items-center gap-5 py-2  pl-[15px] md:pl-0">
               <p className="flex text-[#999999] items-center gap-1.5 font-medium">
                 <LiaBedSolid className="text-2xl text-[#999999]" /> {property.bedrooms}
               </p>
@@ -140,9 +140,9 @@ const PropertyCard = ({ property, loading, error }) => {
           onClick={() => {
             window.location.href = "tel:+1234567890";
           }}
-          className="flex w-full items-center gap-8 border-t border-gray-200 mt-6 py-3"
+          className="flex w-full items-center justify-between md:justify-start gap-8 border-t border-gray-200 mt-6 py-3 px-4"
         >
-          <button className="cursor-pointer flex justify-center items-center gap-2 text-[#999999] bg-[#E6E6E6] px-4 py-3 rounded-md">
+          <button className="cursor-pointer flex justify-center items-center gap-2 text-[#999999] bg-[#E6E6E6] px-4 py-3 rounded-[10px]">
             <FaPhone />
             <span className="font-semibold">Call</span>
           </button>
@@ -151,13 +151,13 @@ const PropertyCard = ({ property, loading, error }) => {
             onClick={() => {
               window.location.href = "https://wa.me/1234567890";
             }}
-            className="flex cursor-pointer justify-center items-center gap-2 text-[#00BD6E] bg-[#E5FFF1] px-4 py-3 rounded-md"
+            className="flex cursor-pointer justify-center items-center gap-2 text-[#00BD6E] bg-[#E5FFF1] px-4 py-3 rounded-[10px]"
           >
             <FaWhatsapp />
-            <span className="font-semibold">Whatsapp</span>
+            <span className="font-semibold ">Whatsapp</span>
           </button>
           
-          <button className="flex cursor-pointer justify-center items-center gap-2 text-[#256FFF] bg-[#EBF8FF] px-4 py-3 rounded-md">
+          <button className="hidden md:flex cursor-pointer justify-center items-center gap-2 text-[#256FFF] bg-[#EBF8FF] px-4 py-3 rounded-[10px]">
             <span className="font-semibold">Book a viewing</span>
           </button>
         </div>
