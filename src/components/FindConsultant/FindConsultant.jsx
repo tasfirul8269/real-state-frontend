@@ -34,14 +34,14 @@ const FindConsultant = () => {
   ];
 
   return (
-    <div className="mx-auto p-4 md:p-6 animate__animated animate__fadeInUp flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 container rounded-xl bg-gradient-to-r from-sky-400 via-blue-400 to-indigo-900">
+    <div className="mx-[auto] p-4 md:p-6 animate__animated animate__fadeInUp flex flex-col md:flex-row justify-between items-center gap-4 md:gap-8 container rounded-[20px] bg-gradient-to-b from-[#B4E4FF]  to-[#256fff]">
       {/* Agent Images - Mobile first stack */}
-      <div className="flex flex-wrap justify-center gap-2 md:gap-3 order-1 md:order-none">
+      <div className="flex flex-wrap justify-center gap-0 md:gap-0px px-10 order-1 md:order-none">
         {agents.map((agent, index) => (
           <img 
             key={index}
             src={agent.img}
-            className="w-12 h-12 md:w-10 md:h-10 rounded-full border-2 border-white shadow-sm hover:scale-110 transition-transform"
+            className="w-12 h-12 md:w-10 ml-[-20px] md:h-10 rounded-full border-2 border-white shadow-sm hover:scale-110 transition-transform"
             alt={`Agent ${agent.name}`}
           />
         ))}
@@ -49,17 +49,17 @@ const FindConsultant = () => {
 
       {/* Title and Description - Center aligned on mobile */}
       <div className="text-center md:text-left order-3 md:order-none flex-1">
-        <h2 className="text-xl sm:text-2xl font-medium text-white mb-1 md:mb-2">
+        <h2 className="text-xl sm:text-2xl font-semibold text-white mb-1 md:mb-2">
           Find your consultant
         </h2>
-        <p className="text-sm sm:text-base text-white/90">
+        <p className="text-sm sm:text-base text-white/60">
           Search our team of 50+ property experts to get professional guidance.
         </p>
       </div>
 
       {/* Search Button - Full width on mobile */}
-      <button className="w-full md:w-auto order-2 md:order-none rounded-md h-12 px-4 md:px-6 text-lg sm:text-xl bg-white hover:bg-gray-50 text-blue-600 hover:text-blue-700 cursor-pointer transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg">
-        <CiSearch className="text-2xl" />
+      <button className="w-full md:w-auto order-2 md:order-none rounded-[15px] h-12 px-4 md:px-6 text-lg sm:text-[xl] bg-[#ffffffaa] hover:bg-gray-50 text-[#fff] hover:text-blue-700 cursor-pointer transition-all flex items-center font-semibold  justify-center gap-2  ">
+       
         <span>Find</span>
       </button>
     </div>
