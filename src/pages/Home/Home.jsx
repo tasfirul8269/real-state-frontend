@@ -3,10 +3,9 @@ import Banner from "../../components/Banner/Banner";
 import SearchField from "../../components/SearchField/SearchField";
 import Services from "../../components/Services/Services";
 import TopProperties from "../../components/TopProperties/TopProperties";
-import PropertySearchTabs from "../../components/PropertySearchByFeature/PropertySearchByFeature";
 import FindConsultant from "../../components/FindConsultant/FindConsultant";
-import PropertyValuation from "../../components/PropertyValuation/PropertyValuation";
 import NewsAndInsights from "../../components/NewsAndInsights/NewsAndInsights";
+import LocationCategory from "../../components/LocationBasedProperty/locationCategory";
 
 const Home = () => {
   return (
@@ -21,8 +20,7 @@ const Home = () => {
       <Services></Services>
       <FindConsultant></FindConsultant>
       <TopProperties></TopProperties>
-      <PropertyValuation></PropertyValuation>
-      <PropertySearchTabs></PropertySearchTabs>
+      <LocationCategory></LocationCategory>
       <NewsAndInsights></NewsAndInsights>
       </div>
     </div>
